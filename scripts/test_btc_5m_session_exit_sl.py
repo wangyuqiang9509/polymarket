@@ -194,10 +194,19 @@ def clob_side_prices(up_token: str, down_token: str, clob_base: str = 'https://c
     return up_ask, dn_ask, picked_spread
 
 
-def clob_best_bid(token_id: str, clob_base: str = 'https://clob.polymarket.com') -> Optional[float]:
+def clob_best_bid_ask(token_id: str, clob_base: str = 'https://clob.polymarket.com') -> tuple[Optional[float], Optional[float]]:
+    """Best bid and best ask of one token from a single book fetch.
+
+    The ask is the non-lagging loss confirmation: Gamma stayed 0.49–0.86 on
+    2026-09-17/18 losers whose bid was already 0.01–0.02.
+    """
     pub = ClobClient(host=clob_base, chain_id=POLYGON)
     book = pub.get_order_book(str(token_id))
-    best_bid, _ = _best_bid_ask(book)
+    return _best_bid_ask(book)
+
+
+def clob_best_bid(token_id: str, clob_base: str = 'https://clob.polymarket.com') -> Optional[float]:
+    best_bid, _ = clob_best_bid_ask(token_id, clob_base)
     return best_bid
 
 
@@ -612,15 +621,19 @@ def main():
 
         side_px = get_side_price_from_slug(opened['market_slug'], opened['side'])
         report['last_side_price'] = side_px
+        live_ask = None
         try:
-            live_bid = clob_best_bid(opened['token_id'])
+            live_bid, live_ask = clob_best_bid_ask(opened['token_id'])
         except Exception:
             live_bid = None
         if live_bid is not None:
             report['last_clob_bid'] = live_bid
+        if live_ask is not None:
+            report['last_clob_ask'] = live_ask
         report['last_check_at'] = ts_utc()
         # CLOB wick alone is not enough: live winners printed 0.28–0.37 with Gamma still 0.73+.
-        if should_cut_on_clob_bid(live_bid, side_px, cut_bid=args.clob_cut_bid):
+        # Confirm with the same book's ask (no lag); Gamma is the fallback confirmation.
+        if should_cut_on_clob_bid(live_bid, side_px, best_ask=live_ask, cut_bid=args.clob_cut_bid):
             close_reason = 'clob_bid_floor'
             break
         if should_cut_on_clob_stop(
@@ -683,7 +696,19 @@ def main():
     force_close_used = None
     client = auth_clob_client()
 
+    resting_gtc = False
     for i in range(max(1, int(args.close_retry_max))):
+        if resting_gtc and args.execute:
+            # A resting GTC reserves the shares; every FAK after it reports
+            # zero_effective_shares (2026-09-18 02:17, 30 retries). Free them first.
+            cancel_info = cancel_token_orders(client, opened['token_id'])
+            close_debug.append({
+                'ts': ts_utc(),
+                'attempt': i + 1,
+                'order_type': 'CANCEL_RESTING',
+                'status': 'no_client' if client is None else ('error' if (cancel_info or {}).get('error') else 'ok'),
+            })
+            resting_gtc = False
         out, objs = run_close(
             args.repo,
             opened['market_slug'],
@@ -769,6 +794,8 @@ def main():
             out = out2
             if post2.get('success') is True and status2 == 'matched':
                 break
+            # Anything other than a confirmed match may have left a resting order.
+            resting_gtc = True
 
             # If GTC is accepted but still live, force-close flow: poll status, cancel, repost aggressive.
             if post2.get('success') is True and status2 == 'live':
@@ -833,12 +860,15 @@ def main():
                 out = out3
                 if post3.get('success') is True and status3 == 'matched':
                     break
+                resting_gtc = True
 
         time.sleep(float(args.close_retry_delay_sec))
 
     post = close_obj.get('order_post_result') or {}
     post_status = str(post.get('status') or '').lower()
     close_usdc = float(post.get('takingAmount') or 0)
+    if resting_gtc and args.execute and not (post.get('success') is True and (post_status == 'matched' or close_usdc > 0)):
+        report['close_cancel_final'] = cancel_token_orders(client, opened['token_id'])
     closed = {
         'close_reason': close_reason,
         'closed_at': ts_utc(),

@@ -157,6 +157,20 @@ class ClobBidFloorTests(unittest.TestCase):
         self.assertFalse(rules.should_cut_on_clob_bid(None, gamma_last=0.20))
         self.assertFalse(rules.should_cut_on_clob_bid(0.35, gamma_last=None))
 
+    def test_ask_confirms_loss_while_gamma_still_lags(self):
+        # 2026-09-18 05:37: bid 0.02→ dead, Gamma stuck at 0.855. Earlier in that
+        # slide bid 0.30 / ask 0.33 was sellable; Gamma-only never fired.
+        self.assertTrue(rules.should_cut_on_clob_bid(0.30, gamma_last=0.855, best_ask=0.33))
+        self.assertTrue(rules.should_cut_on_clob_bid(0.30, gamma_last=None, best_ask=0.33))
+
+    def test_pulled_bid_with_high_ask_is_a_fakeout(self):
+        # Wick: bid 0.30 but ask still 0.80 and Gamma 0.85 → do not sell.
+        self.assertFalse(rules.should_cut_on_clob_bid(0.30, gamma_last=0.85, best_ask=0.80))
+        self.assertFalse(rules.should_cut_on_clob_bid(0.30, gamma_last=None, best_ask=0.80))
+
+    def test_gamma_still_confirms_when_ask_missing(self):
+        self.assertTrue(rules.should_cut_on_clob_bid(0.35, gamma_last=0.40, best_ask=None))
+
 
 class ClobStopTests(unittest.TestCase):
     def test_cuts_when_bid_fails_25pct_but_book_still_liquid(self):

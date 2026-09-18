@@ -126,21 +126,28 @@ def should_cut_on_clob_bid(
     best_bid: Optional[float],
     gamma_last: Optional[float] = None,
     *,
+    best_ask: Optional[float] = None,
     cut_bid: float = DEFAULT_CLOB_CUT_BID,
     min_bid: float = DEFAULT_MIN_SALVAGE_BID,
     max_gamma: float = DEFAULT_CLOB_CUT_MAX_GAMMA,
 ) -> bool:
-    """Sell only when CLOB and Gamma both say the side has lost.
+    """Sell when the CLOB bid is in the floor zone and a second source confirms.
 
     A lone CLOB wick to 0.28–0.40 with Gamma still 0.73–0.96 sold winners
-    on 2026-09-17. Dead 1-cent books cannot be salvaged.
+    on 2026-09-17, so a bid alone is not enough. But Gamma lags: on
+    2026-09-17/18 six losers went 0.70 → 0.01 with Gamma still 0.49–0.86 and
+    were never sold. The same book's best ask does not lag — a pulled bid
+    leaves the ask high, a real loss drags the ask down too. Confirm with
+    the ask first, Gamma second. Dead 1-cent books cannot be salvaged.
     """
-    if best_bid is None or gamma_last is None:
+    if best_bid is None:
         return False
     px = float(best_bid)
     if not (float(min_bid) <= px <= float(cut_bid)):
         return False
-    return float(gamma_last) <= float(max_gamma)
+    if best_ask is not None and float(best_ask) <= float(max_gamma):
+        return True
+    return gamma_last is not None and float(gamma_last) <= float(max_gamma)
 
 
 def should_cut_on_clob_stop(

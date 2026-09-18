@@ -29,7 +29,8 @@ Use this skill when the operator wants to execute a BTC 5m momentum strategy:
 - On close, do not dump at 1 cent when the book is dead; GTC only if a bid `>= 0.05` is still there.
 - Primary stop: **CLOB best bid** vs entry × 0.75, but only while bid is still liquid (`>= 0.45`). This is the sellable 25% stop.
 - Gamma 25% stop is secondary and only fires if a CLOB bid `>= 0.05` is still there (can actually sell). `--no-gamma-sl` disables this Gamma trigger only.
-- CLOB wick floor stays: FAK-sell if bid is `0.05–0.40` **and** Gamma last is `<= 0.50`. A CLOB wick with Gamma still high is a fakeout.
+- CLOB wick floor stays: FAK-sell if bid is `0.05–0.40` **and** the same book's best ask is `<= 0.50` (Gamma `<= 0.50` is the fallback confirmation). A pulled bid with the ask still high is a fakeout; Gamma alone lags and left losers unsold.
+- Once a GTC salvage order has been posted, cancel resting orders on the token before every FAK retry. A resting GTC reserves the shares and every later FAK reports `zero_effective_shares`.
 - At **45s** left, sell if CLOB bid is live but `< 0.55` (`time_exit_45s_not_winning`). Do not flatten 0.70–0.89 names that can still run.
 - At **20s** left, hold if bid/Gamma `>= 0.90`; otherwise try to sell. Last 20s is often a 404 on the loser.
 
