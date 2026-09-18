@@ -221,6 +221,16 @@ class ConfirmCutTests(unittest.TestCase):
         self.assertEqual(fire, 'x')
 
 
+class PollsRequiredTests(unittest.TestCase):
+    def test_ask_confirms_loss_so_no_wait(self):
+        self.assertEqual(rules.polls_required(0.33, 2), 1)
+        self.assertEqual(rules.polls_required(0.50, 2), 1)
+
+    def test_high_ask_keeps_two_poll_confirmation(self):
+        self.assertEqual(rules.polls_required(0.80, 2), 2)
+        self.assertEqual(rules.polls_required(None, 2), 2)
+
+
 class HedgeNotionalTests(unittest.TestCase):
     def test_buys_opposite_for_same_share_count(self):
         # 6.41 UP shares, DOWN ask 0.72 -> spend 4.6152 USDC (= selling UP at 0.28).

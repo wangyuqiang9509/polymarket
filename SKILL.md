@@ -28,7 +28,7 @@ Use this skill when the operator wants to execute a BTC 5m momentum strategy:
 - Skip if that ask is `>= 0.85`. After 3 consecutive wins, also skip ask `>= 0.80`. Do not buy the cheap side instead.
 - On close, do not dump at 1 cent when the book is dead; GTC only if a bid `>= 0.05` is still there.
 - Primary stop: **CLOB best bid** vs entry × 0.75, from the salvage floor (`0.05`) up. Bid `>= 0.45` fires alone; below that the same book's best ask (or Gamma) must be `<= 0.50`. A real loser jumps 0.6 → 0.3 between polls, so the band reaches the floor.
-- Every CLOB-driven cut must be seen on **2 consecutive polls** (`--confirm-polls`). Trade prints show winner wicks last 0–2s; losers take 15–45s to collapse.
+- Every CLOB-driven cut must be seen on **2 consecutive polls** (`--confirm-polls`), unless the same book's best ask is already `<= 0.50`: then the whole book says lost and the cut fires on the first poll. Trade prints show winner wicks last 0–2s; losers take 15–45s to collapse.
 - Poll every **1s** inside the last **90s** (`--fast-poll-sec`, `--fast-poll-window-sec`).
 - Gamma 25% stop is **off** by default (`--gamma-sl` enables it). Live it sold 16 winners at 0.70–0.95 and saved 5 losers: net negative.
 - If our book is dead on close (FAK unmatched / 404), **sell through the opposite book**: buy the same share count of the other token when its ask is `<= 0.95` (`--hedge-max-ask`, `--no-hedge`). Same payoff as selling ours at 1 − ask; the winner's book always has depth. Extra collateral is tied up until settlement; the journal nets it.

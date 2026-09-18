@@ -35,6 +35,7 @@ from btc5m_rules import (
     fak_unmatched,
     hedge_notional,
     in_entry_window,
+    polls_required,
     salvage_limit_price,
     should_cut_on_clob_bid,
     should_cut_on_clob_stop,
@@ -734,8 +735,11 @@ def main():
             # Last 20s is often a 404 on the loser. Flatten a live non-winner at ~45s.
             reason = f'time_exit_{early_flatten_sec}s_not_winning'
 
-        # Wicks in the trade prints lasted 0-2s; a real collapse takes 15-45s. Ask for two polls.
-        fire, pending_reason, pending_count = confirm_cut(pending_reason, reason, pending_count, polls=args.confirm_polls)
+        # Wicks in the trade prints lasted 0-2s; a real collapse takes 15-45s. Ask for two polls,
+        # unless the ask is already <= 0.50 too: then the whole book says lost and we sell at once.
+        fire, pending_reason, pending_count = confirm_cut(
+            pending_reason, reason, pending_count, polls=polls_required(live_ask, args.confirm_polls)
+        )
         if reason and not fire:
             report['pending_cut'] = {'reason': reason, 'count': pending_count, 'bid': live_bid, 'ask': live_ask, 'gamma': side_px, 'ts': ts_utc()}
         if fire:

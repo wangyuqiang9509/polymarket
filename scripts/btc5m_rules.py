@@ -205,6 +205,15 @@ def confirm_cut(pending: Optional[str], reason: Optional[str], count: int, *, po
     return None, pending, count
 
 
+def polls_required(best_ask: Optional[float], confirm_polls: int, *, confirm_px: float = DEFAULT_CLOB_CUT_MAX_GAMMA) -> int:
+    """A wick pulls the bid and leaves the ask high. If the ask is already at or
+    below confirm_px the whole book says the side has lost, so there is nothing
+    to confirm: fire on the first poll. Otherwise wait the configured polls."""
+    if best_ask is not None and float(best_ask) <= float(confirm_px):
+        return 1
+    return max(1, int(confirm_polls))
+
+
 def hedge_notional(shares: float, opp_ask: Optional[float], *, max_ask: float = DEFAULT_HEDGE_MAX_ASK) -> Optional[float]:
     """USDC to spend on the opposite token to neutralise `shares` of ours.
 
