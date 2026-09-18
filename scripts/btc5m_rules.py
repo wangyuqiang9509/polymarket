@@ -25,6 +25,15 @@ DEFAULT_EARLY_FLATTEN_BID = 0.55
 # ~120s left, ±30s. Earlier in the candle is noise; later is too close to expiry.
 DEFAULT_MIN_ENTRY_SECONDS_LEFT = 90
 DEFAULT_MAX_ENTRY_SECONDS_LEFT = 150
+# Any CLOB-driven cut must be seen on this many consecutive polls. Real losers
+# take 15-45s to collapse; winner wicks in the trade prints lasted 0-2s (2/72).
+DEFAULT_CONFIRM_POLLS = 2
+# Poll every second once this close to expiry: losers go 0.6 -> 0.3 in seconds.
+DEFAULT_FAST_POLL_WINDOW_SEC = 90
+DEFAULT_FAST_POLL_SEC = 1.0
+# Sell through the opposite book when ours is dead: buying the other side at
+# ask a is the same trade as selling ours at 1-a. Skip if it recovers < 5c.
+DEFAULT_HEDGE_MAX_ASK = 0.95
 
 
 def in_entry_window(
@@ -154,19 +163,59 @@ def should_cut_on_clob_stop(
     best_bid: Optional[float],
     sl_price: Optional[float],
     *,
+    best_ask: Optional[float] = None,
+    gamma_last: Optional[float] = None,
     min_live_bid: float = DEFAULT_CLOB_SL_MIN_BID,
     min_salvage: float = DEFAULT_MIN_SALVAGE_BID,
+    confirm_px: float = DEFAULT_CLOB_CUT_MAX_GAMMA,
 ) -> bool:
     """Cut on CLOB bid vs entry*0.75 while the book is still sellable.
 
-    Ignores the 0.05-0.40 wick/dead zone (Sep 17 winners printed 0.28-0.37).
-    That zone still requires Gamma confirmation via should_cut_on_clob_bid.
+    Bid >= min_live_bid (0.45) fires on its own. Below that (the 0.05-0.45
+    wick/dead zone, Sep 17 winners printed 0.28-0.37) it needs the same
+    book's ask or Gamma <= confirm_px. A real loser jumps 0.6 -> 0.3 between
+    two polls, so the band must reach down to the salvage floor.
     """
     if best_bid is None or sl_price is None:
         return False
     px = float(best_bid)
-    floor = max(float(min_live_bid), float(min_salvage))
-    return floor <= px <= float(sl_price)
+    if not (float(min_salvage) <= px <= float(sl_price)):
+        return False
+    if px >= float(min_live_bid):
+        return True
+    if best_ask is not None and float(best_ask) <= float(confirm_px):
+        return True
+    return gamma_last is not None and float(gamma_last) <= float(confirm_px)
+
+
+def confirm_cut(pending: Optional[str], reason: Optional[str], count: int, *, polls: int = DEFAULT_CONFIRM_POLLS) -> tuple[Optional[str], Optional[str], int]:
+    """Require the same cut reason on `polls` consecutive polls.
+
+    Returns (fire_reason, pending, count). A wick that shows on one poll and
+    is gone on the next never fires; a real collapse fires one poll late.
+    """
+    if not reason:
+        return None, None, 0
+    if reason == pending:
+        count += 1
+    else:
+        pending, count = reason, 1
+    if count >= max(1, int(polls)):
+        return reason, pending, count
+    return None, pending, count
+
+
+def hedge_notional(shares: float, opp_ask: Optional[float], *, max_ask: float = DEFAULT_HEDGE_MAX_ASK) -> Optional[float]:
+    """USDC to spend on the opposite token to neutralise `shares` of ours.
+
+    None when the other side is too expensive to be worth it (recovers < 1-max_ask).
+    """
+    if opp_ask is None or shares <= 0:
+        return None
+    a = float(opp_ask)
+    if a <= 0 or a > float(max_ask):
+        return None
+    return round(float(shares) * a, 4)
 
 
 def should_cut_on_gamma_stop(

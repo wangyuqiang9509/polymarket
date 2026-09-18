@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 import argparse
 import datetime as dt
 import json
@@ -16,6 +18,10 @@ from btc5m_martingale import load_trades
 from btc5m_rules import (
     DEFAULT_CLOB_CUT_BID,
     DEFAULT_CLOB_SL_MIN_BID,
+    DEFAULT_CONFIRM_POLLS,
+    DEFAULT_FAST_POLL_SEC,
+    DEFAULT_FAST_POLL_WINDOW_SEC,
+    DEFAULT_HEDGE_MAX_ASK,
     DEFAULT_EARLY_FLATTEN_BID,
     DEFAULT_EARLY_FLATTEN_SEC,
     DEFAULT_EXPENSIVE_AFTER_WINS,
@@ -24,8 +30,10 @@ from btc5m_rules import (
     DEFAULT_MAX_ENTRY_SECONDS_LEFT,
     DEFAULT_MIN_ENTRY_SECONDS_LEFT,
     choose_side,
+    confirm_cut,
     consecutive_wins,
     fak_unmatched,
+    hedge_notional,
     in_entry_window,
     salvage_limit_price,
     should_cut_on_clob_bid,
@@ -330,6 +338,62 @@ def get_side_price_from_slug(slug: str, side: str) -> Optional[float]:
         return None
 
 
+def try_hedge_close(args: argparse.Namespace, opened: dict[str, Any], report: dict[str, Any], close_debug: list[dict[str, Any]], attempt: int) -> bool:
+    """Sell through the opposite book: buy `shares` of the other token.
+
+    Buying the other side at ask a pays exactly what selling ours at 1-a
+    would. The loser's book 404s in the last minute; the winner's book never
+    does. Costs shares*a of extra collateral until settlement.
+    """
+    opp_token = str(opened.get('opp_token_id') or '')
+    opp_side = str(opened.get('opp_side') or '')
+    if not opp_token or not opp_side:
+        return False
+    try:
+        _opp_bid, opp_ask = clob_best_bid_ask(opp_token)
+    except Exception:
+        opp_ask = None
+    notional = hedge_notional(float(opened['shares']), opp_ask, max_ask=float(args.hedge_max_ask))
+    close_debug.append({
+        'ts': ts_utc(),
+        'attempt': attempt,
+        'order_type': 'HEDGE_OPPOSITE',
+        'status': 'try' if notional else 'skip_opposite_too_expensive',
+        'opp_ask': opp_ask,
+        'notional_usd': notional,
+    })
+    if not notional:
+        return False
+    out, objs = run_open(args.repo, opened['market_slug'], opp_side, float(notional), args.execute)
+    post = {}
+    runner = {}
+    for o in objs:
+        if isinstance(o, dict) and 'order_post_result' in o:
+            runner = o
+            post = o.get('order_post_result') or {}
+    ok = bool(post and post.get('success') is True and str(post.get('status', '')).lower() == 'matched')
+    close_debug.append({
+        'ts': ts_utc(),
+        'attempt': attempt,
+        'order_type': 'HEDGE_OPPOSITE',
+        'status': str(post.get('status') or 'error').lower(),
+    })
+    report['hedge_raw'] = out[-2000:]
+    if not ok:
+        return False
+    report['hedge'] = {
+        'side': opp_side,
+        'token_id': str(runner.get('token_id') or opp_token),
+        'shares': float(post.get('takingAmount') or 0),
+        'cost_usdc': float(post.get('makingAmount') or 0),
+        'entry_price': float(runner.get('entry_price') or (opp_ask or 0)),
+        'order_id': post.get('orderID'),
+        'tx': (post.get('transactionsHashes') or [None])[0],
+        'at': ts_utc(),
+    }
+    return True
+
+
 PROFILES: dict[str, dict[str, Any]] = {
     'conservative': {
         'threshold': 0.70,
@@ -438,7 +502,13 @@ def main():
     ap.add_argument('--early-flatten-bid', type=float, default=None, help='At early-flatten-sec, sell if CLOB bid is below this and still salvageable')
     ap.add_argument('--close-retry-max', type=int, default=18, help='Max close retries when position is not yet visible / not immediately closable')
     ap.add_argument('--close-retry-delay-sec', type=float, default=2.0, help='Delay between close retries')
-    ap.add_argument('--no-gamma-sl', action='store_true', help='Do not stop-loss against Gamma last vs entry; keep CLOB 25%% SL, floor, and time exits')
+    ap.add_argument('--gamma-sl', action='store_true', help='Also stop-loss on Gamma last vs entry (off by default: it sold 16 live winners at 0.70-0.95)')
+    ap.add_argument('--no-gamma-sl', action='store_true', help='Deprecated no-op: Gamma stop is already off unless --gamma-sl')
+    ap.add_argument('--confirm-polls', type=int, default=DEFAULT_CONFIRM_POLLS, help='A CLOB cut must be seen on this many consecutive polls (wicks last 0-2s)')
+    ap.add_argument('--fast-poll-sec', type=float, default=DEFAULT_FAST_POLL_SEC, help='Poll interval inside the fast window before expiry')
+    ap.add_argument('--fast-poll-window-sec', type=float, default=DEFAULT_FAST_POLL_WINDOW_SEC, help='Seconds before expiry from which the fast poll applies')
+    ap.add_argument('--hedge-max-ask', type=float, default=DEFAULT_HEDGE_MAX_ASK, help='When our book is dead, buy the opposite token if its ask is at or below this')
+    ap.add_argument('--no-hedge', action='store_true', help='Never sell through the opposite book')
     ap.add_argument('--execute', action='store_true')
     args = apply_profile(ap.parse_args())
 
@@ -463,7 +533,13 @@ def main():
             'early_flatten_bid': args.early_flatten_bid,
             'close_retry_max': args.close_retry_max,
             'close_retry_delay_sec': args.close_retry_delay_sec,
-            'no_gamma_sl': args.no_gamma_sl,
+            'gamma_sl': bool(args.gamma_sl),
+            'no_gamma_sl': not bool(args.gamma_sl),
+            'confirm_polls': args.confirm_polls,
+            'fast_poll_sec': args.fast_poll_sec,
+            'fast_poll_window_sec': args.fast_poll_window_sec,
+            'hedge_max_ask': args.hedge_max_ask,
+            'no_hedge': bool(args.no_hedge),
             'execute': args.execute,
         },
         'attempts': [],
@@ -579,6 +655,8 @@ def main():
                     'market_end_iso': end_iso,
                     'side': side,
                     'token_id': token_id,
+                    'opp_side': 'DOWN' if side == 'UP' else 'UP',
+                    'opp_token_id': dn_t if side == 'UP' else up_t,
                     'entry_price': entry_price,
                     'shares': shares,
                     'cost_usdc': cost,
@@ -613,6 +691,8 @@ def main():
 
     close_reason = None
     early_flatten_sec = int(args.early_flatten_sec)
+    pending_reason = None
+    pending_count = 0
     while True:
         now = time.time()
         if now >= (end_ts - args.exit_before_sec):
@@ -631,29 +711,39 @@ def main():
         if live_ask is not None:
             report['last_clob_ask'] = live_ask
         report['last_check_at'] = ts_utc()
-        # CLOB wick alone is not enough: live winners printed 0.28–0.37 with Gamma still 0.73+.
-        # Confirm with the same book's ask (no lag); Gamma is the fallback confirmation.
-        if should_cut_on_clob_bid(live_bid, side_px, best_ask=live_ask, cut_bid=args.clob_cut_bid):
-            close_reason = 'clob_bid_floor'
-            break
+
+        reason = None
+        # Wide-band CLOB stop: bid <= entry*0.75 down to the salvage floor. Below 0.45 the
+        # same book's ask (or Gamma) must confirm — a pulled bid with the ask still high is a wick.
         if should_cut_on_clob_stop(
             live_bid,
             sl_price,
+            best_ask=live_ask,
+            gamma_last=side_px,
             min_live_bid=args.clob_sl_min_bid,
         ):
-            close_reason = f"stop_loss_clob_{int(args.stop_loss_pct * 100)}pct"
-            break
-        if (not args.no_gamma_sl) and should_cut_on_gamma_stop(side_px, sl_price, live_bid):
-            close_reason = f"stop_loss_{int(args.stop_loss_pct * 100)}pct"
-            break
-        # Last 20s is often a 404 on the loser. Flatten a live non-winner at ~45s.
-        if now >= (end_ts - early_flatten_sec) and should_flatten_before_dead_book(
+            reason = f"stop_loss_clob_{int(args.stop_loss_pct * 100)}pct"
+        elif should_cut_on_clob_bid(live_bid, side_px, best_ask=live_ask, cut_bid=args.clob_cut_bid):
+            reason = 'clob_bid_floor'
+        elif args.gamma_sl and should_cut_on_gamma_stop(side_px, sl_price, live_bid):
+            reason = f"stop_loss_{int(args.stop_loss_pct * 100)}pct"
+        elif now >= (end_ts - early_flatten_sec) and should_flatten_before_dead_book(
             live_bid,
             flatten_below=args.early_flatten_bid,
         ):
-            close_reason = f'time_exit_{early_flatten_sec}s_not_winning'
+            # Last 20s is often a 404 on the loser. Flatten a live non-winner at ~45s.
+            reason = f'time_exit_{early_flatten_sec}s_not_winning'
+
+        # Wicks in the trade prints lasted 0-2s; a real collapse takes 15-45s. Ask for two polls.
+        fire, pending_reason, pending_count = confirm_cut(pending_reason, reason, pending_count, polls=args.confirm_polls)
+        if reason and not fire:
+            report['pending_cut'] = {'reason': reason, 'count': pending_count, 'bid': live_bid, 'ask': live_ask, 'gamma': side_px, 'ts': ts_utc()}
+        if fire:
+            close_reason = fire
+            report['cut_snapshot'] = {'reason': fire, 'bid': live_bid, 'ask': live_ask, 'gamma': side_px, 'seconds_left': end_ts - time.time()}
             break
-        time.sleep(args.poll_sec)
+        sec_left_now = end_ts - time.time()
+        time.sleep(args.fast_poll_sec if sec_left_now <= args.fast_poll_window_sec else args.poll_sec)
 
     # Last 20s: winning book can still be sold (~0.99), losing book is usually 404.
     # Hold the winning book to settlement instead of clipping $0.01–0.08.
@@ -758,6 +848,11 @@ def main():
             gamma_last = get_side_price_from_slug(opened['market_slug'], opened['side'])
             if gamma_last is None:
                 gamma_last = report.get('last_side_price')
+            # Our book is dead: sell through the other side's book (same payoff, live liquidity).
+            if not args.no_hedge and not report.get('hedge'):
+                if try_hedge_close(args, opened, report, close_debug, i + 1):
+                    close_reason = f'{close_reason}+hedge_opposite'
+                    break
             limit_px = salvage_limit_price(bb, gamma_last)
             if limit_px is None:
                 close_debug.append({
@@ -879,6 +974,7 @@ def main():
         'close_shares': float(post.get('makingAmount') or 0),
         'close_usdc': close_usdc,
         'close_skipped': close_obj.get('close_skipped'),
+        'hedge': report.get('hedge'),
     }
     report['close_debug'] = close_debug
     if fallback_used:

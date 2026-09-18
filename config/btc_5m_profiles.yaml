@@ -127,3 +127,4 @@ notes:
   - "Entry behavior: wait until 90-150s remain (~120s ± 30s); if stronger-side CLOB ask >= 0.70, enter that side. Skip earlier and later."
   - "Stop-loss: CLOB bid vs entry*0.75 while bid >= 0.45; Gamma 25% only if a salvage bid remains; flatten live non-winners at 45s left; hold winners at 20s."
   - "Floor 0.05-0.40 confirms with the same book's best ask <= 0.50 first, Gamma <= 0.50 second (Gamma lagged 0.49-0.86 on unsold Sep 17/18 losers). Resting GTC salvage orders are cancelled before each FAK retry."
+  - "CLOB stop band reaches the 0.05 floor (ask/Gamma <= 0.50 confirms below 0.45); cuts need 2 consecutive polls; 1s polling in the last 90s; Gamma stop off unless --gamma-sl; dead book on close -> buy the opposite token (hedge_max_ask 0.95)."

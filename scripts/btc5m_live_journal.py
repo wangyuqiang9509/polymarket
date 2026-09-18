@@ -135,7 +135,9 @@ def note_for(row: dict[str, Any]) -> str:
             else:
                 bits.append('平仓失败，输方token未卖掉')
 
-    if not ok and winner and winner != side:
+    if (fnum(row.get('hedge_shares')) or 0) > 0:
+        bits.append('对面盘口对冲')
+    elif not ok and winner and winner != side:
         bits.append('约亏掉本金')
     return '；'.join(bits)
 
@@ -152,6 +154,7 @@ def collect_sessions(runtime_dir: Path) -> list[dict[str, Any]]:
                 continue
             closed = obj.get('closed') if isinstance(obj.get('closed'), dict) else {}
             params = obj.get('params') if isinstance(obj.get('params'), dict) else {}
+            hedge = obj.get('hedge') if isinstance(obj.get('hedge'), dict) else (closed.get('hedge') if isinstance(closed.get('hedge'), dict) else {})
             key = '|'.join(
                 [
                     str(opened.get('opened_at')),
@@ -190,6 +193,9 @@ def collect_sessions(runtime_dir: Path) -> list[dict[str, Any]]:
                     'threshold': fnum(params.get('threshold')),
                     'stake_usd': fnum(params.get('stake_usd')),
                     'profile': params.get('profile') or '',
+                    'hedge_side': hedge.get('side') or '',
+                    'hedge_shares': fnum(hedge.get('shares')),
+                    'hedge_cost_usdc': fnum(hedge.get('cost_usdc')),
                 }
             )
     rows.sort(key=lambda r: str(r.get('opened_at') or ''))
@@ -210,8 +216,12 @@ def enrich_settlement(rows: list[dict[str, Any]]) -> None:
         cost = fnum(row.get('cost_usdc')) or 0.0
         winner = row['settlement_winner']
         side = row.get('side')
+        h_shares = fnum(row.get('hedge_shares')) or 0.0
+        h_cost = fnum(row.get('hedge_cost_usdc')) or 0.0
+        h_side = row.get('hedge_side') or ''
         if winner in ('UP', 'DOWN') and shares > 0:
-            row['hold_to_settlement_pnl_usdc'] = round((shares * 1.0 - cost) if winner == side else (0.0 - cost), 6)
+            payout = (shares if winner == side else 0.0) + (h_shares if (h_shares > 0 and winner == h_side) else 0.0)
+            row['hold_to_settlement_pnl_usdc'] = round(payout - cost - h_cost, 6)
         else:
             row['hold_to_settlement_pnl_usdc'] = None
         row['note'] = note_for(row)

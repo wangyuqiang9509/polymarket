@@ -185,6 +185,52 @@ class ClobStopTests(unittest.TestCase):
         self.assertFalse(rules.should_cut_on_clob_stop(0.37, 0.60))
         self.assertFalse(rules.should_cut_on_clob_stop(0.28, 0.60))
 
+    def test_wide_band_fires_below_045_when_ask_confirms(self):
+        # Real loser jumped 0.60 -> 0.30 between polls; ask 0.33 confirms.
+        self.assertTrue(rules.should_cut_on_clob_stop(0.30, 0.60, best_ask=0.33))
+        self.assertTrue(rules.should_cut_on_clob_stop(0.30, 0.60, best_ask=None, gamma_last=0.40))
+
+    def test_wide_band_ignores_pulled_bid_with_high_ask(self):
+        self.assertFalse(rules.should_cut_on_clob_stop(0.30, 0.60, best_ask=0.80, gamma_last=0.85))
+
+    def test_wide_band_never_sells_penny_book(self):
+        self.assertFalse(rules.should_cut_on_clob_stop(0.02, 0.60, best_ask=0.03))
+
+
+class ConfirmCutTests(unittest.TestCase):
+    def test_fires_on_second_consecutive_poll(self):
+        fire, pend, n = rules.confirm_cut(None, 'clob_bid_floor', 0)
+        self.assertEqual((fire, pend, n), (None, 'clob_bid_floor', 1))
+        fire, pend, n = rules.confirm_cut(pend, 'clob_bid_floor', n)
+        self.assertEqual(fire, 'clob_bid_floor')
+
+    def test_one_poll_wick_never_fires(self):
+        fire, pend, n = rules.confirm_cut(None, 'clob_bid_floor', 0)
+        fire, pend, n = rules.confirm_cut(pend, None, n)
+        self.assertEqual((fire, pend, n), (None, None, 0))
+        fire, pend, n = rules.confirm_cut(pend, 'clob_bid_floor', n)
+        self.assertIsNone(fire)
+
+    def test_reason_change_restarts_count(self):
+        fire, pend, n = rules.confirm_cut(None, 'stop_loss_clob_25pct', 0)
+        fire, pend, n = rules.confirm_cut(pend, 'clob_bid_floor', n)
+        self.assertEqual((fire, pend, n), (None, 'clob_bid_floor', 1))
+
+    def test_single_poll_mode(self):
+        fire, _, _ = rules.confirm_cut(None, 'x', 0, polls=1)
+        self.assertEqual(fire, 'x')
+
+
+class HedgeNotionalTests(unittest.TestCase):
+    def test_buys_opposite_for_same_share_count(self):
+        # 6.41 UP shares, DOWN ask 0.72 -> spend 4.6152 USDC (= selling UP at 0.28).
+        self.assertAlmostEqual(rules.hedge_notional(6.41, 0.72), 4.6152)
+
+    def test_skips_when_opposite_too_expensive(self):
+        self.assertIsNone(rules.hedge_notional(6.41, 0.97))
+        self.assertIsNone(rules.hedge_notional(6.41, None))
+        self.assertIsNone(rules.hedge_notional(0.0, 0.5))
+
     def test_ignores_dead_penny_and_missing_bid(self):
         self.assertFalse(rules.should_cut_on_clob_stop(0.01, 0.60))
         self.assertFalse(rules.should_cut_on_clob_stop(None, 0.60))

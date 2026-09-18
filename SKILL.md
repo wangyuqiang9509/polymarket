@@ -27,8 +27,11 @@ Use this skill when the operator wants to execute a BTC 5m momentum strategy:
 - If both UP and DOWN satisfy threshold logic, choose the stronger side.
 - Skip if that ask is `>= 0.85`. After 3 consecutive wins, also skip ask `>= 0.80`. Do not buy the cheap side instead.
 - On close, do not dump at 1 cent when the book is dead; GTC only if a bid `>= 0.05` is still there.
-- Primary stop: **CLOB best bid** vs entry × 0.75, but only while bid is still liquid (`>= 0.45`). This is the sellable 25% stop.
-- Gamma 25% stop is secondary and only fires if a CLOB bid `>= 0.05` is still there (can actually sell). `--no-gamma-sl` disables this Gamma trigger only.
+- Primary stop: **CLOB best bid** vs entry × 0.75, from the salvage floor (`0.05`) up. Bid `>= 0.45` fires alone; below that the same book's best ask (or Gamma) must be `<= 0.50`. A real loser jumps 0.6 → 0.3 between polls, so the band reaches the floor.
+- Every CLOB-driven cut must be seen on **2 consecutive polls** (`--confirm-polls`). Trade prints show winner wicks last 0–2s; losers take 15–45s to collapse.
+- Poll every **1s** inside the last **90s** (`--fast-poll-sec`, `--fast-poll-window-sec`).
+- Gamma 25% stop is **off** by default (`--gamma-sl` enables it). Live it sold 16 winners at 0.70–0.95 and saved 5 losers: net negative.
+- If our book is dead on close (FAK unmatched / 404), **sell through the opposite book**: buy the same share count of the other token when its ask is `<= 0.95` (`--hedge-max-ask`, `--no-hedge`). Same payoff as selling ours at 1 − ask; the winner's book always has depth. Extra collateral is tied up until settlement; the journal nets it.
 - CLOB wick floor stays: FAK-sell if bid is `0.05–0.40` **and** the same book's best ask is `<= 0.50` (Gamma `<= 0.50` is the fallback confirmation). A pulled bid with the ask still high is a fakeout; Gamma alone lags and left losers unsold.
 - Once a GTC salvage order has been posted, cancel resting orders on the token before every FAK retry. A resting GTC reserves the shares and every later FAK reports `zero_effective_shares`.
 - At **45s** left, sell if CLOB bid is live but `< 0.55` (`time_exit_45s_not_winning`). Do not flatten 0.70–0.89 names that can still run.
