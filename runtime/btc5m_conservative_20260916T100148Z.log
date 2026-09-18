@@ -1,0 +1,102 @@
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+0 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T10:01:50.936134Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.25,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T10:01:52.029493Z",
+      "slug": "btc-updown-5m-1789552800",
+      "status": "heartbeat",
+      "gamma_up": 0.485,
+      "gamma_down": 0.515,
+      "clob_up_ask": 0.89,
+      "clob_down_ask": 0.12,
+      "seconds_left": 188.75267434120178,
+      "min_spread": 0.009999999999999995
+    },
+    {
+      "ts": "2026-09-16T10:02:06.346853Z",
+      "slug": "btc-updown-5m-1789552800",
+      "status": "heartbeat",
+      "gamma_up": 0.485,
+      "gamma_down": 0.515,
+      "clob_up_ask": 0.94,
+      "clob_down_ask": 0.07,
+      "seconds_left": 174.59171795845032,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T10:02:17.646071Z",
+      "slug": "btc-updown-5m-1789552800",
+      "status": "heartbeat",
+      "gamma_up": 0.485,
+      "gamma_down": 0.515,
+      "clob_up_ask": 0.93,
+      "clob_down_ask": 0.08,
+      "seconds_left": 163.11179065704346,
+      "min_spread": 0.009999999999999995
+    }
+  ],
+  "last_open_try": "{\"error\": \"PolyApiException[status_code=400, error_message={'error': 'no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.', 'orderID': '0xb82d52d4753fbcbc175a6d51929128ee33ea2e7493f69bfb0af5c65ed4a9b57d'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=400, error_message={'error': 'no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.', 'orderID': '0xb82d52d4753fbcbc175a6d51929128ee33ea2e7493f69bfb0af5c65ed4a9b57d'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/order body={\"error\":\"no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.\",\"orderID\":\"0xb82d52d4753fbcbc175a6d51929128ee33ea2e7493f69bfb0af5c65ed4a9b57d\"}\n",
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789552800\", \"force_side\": \"UP\", \"token_id\": \"61307313146210606408648568297121567285517634137392874707064399985369820520015\", \"entry_price\": 0.94, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 241.57999999999998, \"collateral_pusd\": 50.183505, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xed58ab4bfed26e86bb375f606e2e5402e0902d908b873bdc011f6b5332ed5126\", \"takingAmount\": \"5.319133\", \"makingAmount\": \"4.999985\", \"status\": \"matched\", \"transactionsHashes\": [\"0xd91304ef48d1a8941980a81a82996607fcbfc0e93ebf1fd90ece3180d1025834\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T10:02:22.981769Z",
+    "market_slug": "btc-updown-5m-1789552800",
+    "market_end_iso": "2026-09-16T10:05:00Z",
+    "side": "UP",
+    "token_id": "61307313146210606408648568297121567285517634137392874707064399985369820520015",
+    "entry_price": 0.94,
+    "shares": 5.319133,
+    "cost_usdc": 4.999985,
+    "open_order_id": "0xed58ab4bfed26e86bb375f606e2e5402e0902d908b873bdc011f6b5332ed5126",
+    "open_tx": "0xd91304ef48d1a8941980a81a82996607fcbfc0e93ebf1fd90ece3180d1025834"
+  },
+  "stop_loss_price": 0.705,
+  "last_side_price": 0.485,
+  "last_check_at": "2026-09-16T10:02:23.277406Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T10:02:27.905185Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789552800\", \"token_id\": \"61307313146210606408648568297121567285517634137392874707064399985369820520015\", \"requested_shares\": 5.319133, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 5.319133, \"sell_shares\": 5.3191, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x3c8f03dccdcd70dce578ae0fa2ae37cc82d23614f4c8cb0ad07493890db63134\", \"takingAmount\": \"4.9914\", \"makingAmount\": \"5.31\", \"status\": \"matched\", \"transactionsHashes\": [\"0x75b0ae9fb4042f83d5baf0761f5266dfd4cfe549f0552f83bd6c09c137ad42ff\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "stop_loss_25pct",
+    "closed_at": "2026-09-16T10:02:27.905211Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0x3c8f03dccdcd70dce578ae0fa2ae37cc82d23614f4c8cb0ad07493890db63134",
+    "close_tx": "0x75b0ae9fb4042f83d5baf0761f5266dfd4cfe549f0552f83bd6c09c137ad42ff",
+    "close_shares": 5.31,
+    "close_usdc": 4.9914,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": -0.008585,
+  "finished_at": "2026-09-16T10:02:27.905231Z",
+  "result": "done"
+}
+[2026-09-16T10:02:27Z] session_end rc=0 trades=1
+[2026-09-16T10:02:29Z] cash=45.16253
+[2026-09-16T10:02:29Z] stop_daily_loss start=50.183505 now=45.16253 pct=10
+[2026-09-16T10:02:29Z] loop_exit

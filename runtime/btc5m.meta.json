@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-09-18T09:57:36Z",
+  "pid": 2203929,
+  "profile": "conservative",
+  "entryTimeoutMin": 20,
+  "pollSec": 2,
+  "closeRetryMax": 30,
+  "closeRetryDelaySec": 2,
+  "log": "/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m_conservative_20260918T095736Z.log",
+  "repo": "/home/yukeen/pm-hl-conservative-plus-repo",
+  "loop": 1,
+  "stopLossPct": "",
+  "maxTrades": "10",
+  "dailyLossPct": "",
+  "minEntrySecondsLeft": "90",
+  "maxEntrySecondsLeft": "150",
+  "noGammaSl": 0
+}

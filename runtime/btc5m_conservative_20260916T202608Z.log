@@ -1,0 +1,3183 @@
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T20:26:10Z] start_cash=17.630212
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "loss", "last_opened_at": "2026-09-16T20:20:51.142970Z", "applied": 1}
+[2026-09-16T20:26:10Z] session_begin trades=0 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T20:26:11.108822Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T20:26:12.286894Z",
+      "slug": "btc-updown-5m-1789590300",
+      "status": "heartbeat",
+      "gamma_up": 0.485,
+      "gamma_down": 0.515,
+      "clob_up_ask": 0.26,
+      "clob_down_ask": 0.75,
+      "seconds_left": 228.5551471710205,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789590300\", \"force_side\": \"DOWN\", \"token_id\": \"29610699872906525476084183814225861811327590718023936087067602710633343764133\", \"entry_price\": 0.75, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 125.535, \"collateral_pusd\": 17.630212, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xa94ef6d42bf310a4ac229a5f645915920db1332d564f3cb0cf5230696abde1c9\", \"takingAmount\": \"5.882353\", \"makingAmount\": \"5\", \"status\": \"matched\", \"transactionsHashes\": [\"0xd236d1630c21fd1adcd9371a8448d37d52b87cda1e12af45d00020767099987f\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T20:26:17.024618Z",
+    "market_slug": "btc-updown-5m-1789590300",
+    "market_end_iso": "2026-09-16T20:30:00Z",
+    "side": "DOWN",
+    "token_id": "29610699872906525476084183814225861811327590718023936087067602710633343764133",
+    "entry_price": 0.75,
+    "shares": 5.882353,
+    "cost_usdc": 5.0,
+    "open_order_id": "0xa94ef6d42bf310a4ac229a5f645915920db1332d564f3cb0cf5230696abde1c9",
+    "open_tx": "0xd236d1630c21fd1adcd9371a8448d37d52b87cda1e12af45d00020767099987f"
+  },
+  "stop_loss_price": 0.07499999999999998,
+  "last_side_price": 0.995,
+  "last_check_at": "2026-09-16T20:29:32.260226Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T20:29:45.153203Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789590300\", \"token_id\": \"29610699872906525476084183814225861811327590718023936087067602710633343764133\", \"requested_shares\": 5.882353, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 5.882353, \"sell_shares\": 5.8823, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xf05facfe2fd9b3074c8a0b435ab23fa1ebda2b42e33c462e046ad05ab755cc48\", \"takingAmount\": \"5.87412\", \"makingAmount\": \"5.88\", \"status\": \"matched\", \"transactionsHashes\": [\"0x5739b5bc8a8302f58ccc30eefa1ad53648c1b413c2f9b63311f65b6e2323b83a\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T20:29:45.153235Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0xf05facfe2fd9b3074c8a0b435ab23fa1ebda2b42e33c462e046ad05ab755cc48",
+    "close_tx": "0x5739b5bc8a8302f58ccc30eefa1ad53648c1b413c2f9b63311f65b6e2323b83a",
+    "close_shares": 5.88,
+    "close_usdc": 5.87412,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 0.87412,
+  "finished_at": "2026-09-16T20:29:45.153350Z",
+  "result": "done"
+}
+[2026-09-16T20:29:45Z] session_end rc=0 trades=1 stake_usd=5.0
+journal_ok trades=112 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T20:31:01Z] cash=18.451422
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T20:26:17.024618Z", "applied": 1}
+[2026-09-16T20:31:09Z] session_begin trades=1 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T20:31:10.456080Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T20:31:11.555742Z",
+      "slug": "btc-updown-5m-1789590600",
+      "status": "heartbeat",
+      "gamma_up": 0.495,
+      "gamma_down": 0.505,
+      "clob_up_ask": 0.77,
+      "clob_down_ask": 0.24,
+      "seconds_left": 229.2403724193573,
+      "min_spread": 0.009999999999999981
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789590600\", \"force_side\": \"UP\", \"token_id\": \"26061121703335348072182835728823860778759161518353728038248257157880272628299\", \"entry_price\": 0.77, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 163.24, \"collateral_pusd\": 18.451422, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x9851514e33b3aaddb437a779db850c1e4e517044eed24ed9b8c40654969341aa\", \"takingAmount\": \"6.493504\", \"makingAmount\": \"4.999998\", \"status\": \"matched\", \"transactionsHashes\": [\"0xe011ca4b96e5adb712c122c5accb4c71b77084e629c462b8f5e5003723596c78\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T20:31:16.333333Z",
+    "market_slug": "btc-updown-5m-1789590600",
+    "market_end_iso": "2026-09-16T20:35:00Z",
+    "side": "UP",
+    "token_id": "26061121703335348072182835728823860778759161518353728038248257157880272628299",
+    "entry_price": 0.77,
+    "shares": 6.493504,
+    "cost_usdc": 4.999998,
+    "open_order_id": "0x9851514e33b3aaddb437a779db850c1e4e517044eed24ed9b8c40654969341aa",
+    "open_tx": "0xe011ca4b96e5adb712c122c5accb4c71b77084e629c462b8f5e5003723596c78"
+  },
+  "stop_loss_price": 0.07699999999999999,
+  "last_side_price": 0.215,
+  "last_check_at": "2026-09-16T20:34:39.175609Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T20:34:48.903577Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789590600\", \"token_id\": \"26061121703335348072182835728823860778759161518353728038248257157880272628299\", \"requested_shares\": 6.493504, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 6.493504, \"sell_shares\": 6.4935, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xb28c6671e5d3116bd869472b0dcd4bbcf53ba97e125c76e0c65219b0f0d35310\", \"takingAmount\": \"6.4251\", \"makingAmount\": \"6.49\", \"status\": \"matched\", \"transactionsHashes\": [\"0x947727a34b42b4fb89963a718b9aa516b8e2a0c2460e235bd4a26d591a580d21\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T20:34:48.903602Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0xb28c6671e5d3116bd869472b0dcd4bbcf53ba97e125c76e0c65219b0f0d35310",
+    "close_tx": "0x947727a34b42b4fb89963a718b9aa516b8e2a0c2460e235bd4a26d591a580d21",
+    "close_shares": 6.49,
+    "close_usdc": 6.4251,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 1.425102,
+  "finished_at": "2026-09-16T20:34:48.903621Z",
+  "result": "done"
+}
+[2026-09-16T20:34:48Z] session_end rc=0 trades=2 stake_usd=5.0
+journal_ok trades=113 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T20:35:47Z] cash=19.791544
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T20:31:16.333333Z", "applied": 1}
+[2026-09-16T20:35:55Z] session_begin trades=2 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T20:35:56.290012Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T20:35:57.666991Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.57,
+      "seconds_left": 243.38594794273376,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T20:35:57.667017Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.57,
+      "seconds_left": 243.38594794273376
+    },
+    {
+      "ts": "2026-09-16T20:36:06.703261Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.5,
+      "clob_down_ask": 0.51,
+      "seconds_left": 237.03536701202393,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:06.703285Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.5,
+      "clob_down_ask": 0.51,
+      "seconds_left": 237.03536701202393
+    },
+    {
+      "ts": "2026-09-16T20:36:12.771312Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.48,
+      "clob_down_ask": 0.53,
+      "seconds_left": 227.98406791687012,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:12.771337Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.48,
+      "clob_down_ask": 0.53,
+      "seconds_left": 227.98406791687012
+    },
+    {
+      "ts": "2026-09-16T20:36:18.895030Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.63,
+      "seconds_left": 221.91867852210999,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:18.895044Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.63,
+      "seconds_left": 221.91867852210999
+    },
+    {
+      "ts": "2026-09-16T20:36:25.011113Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.36,
+      "clob_down_ask": 0.64,
+      "seconds_left": 215.79540514945984,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:25.011139Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.36,
+      "clob_down_ask": 0.64,
+      "seconds_left": 215.79540514945984
+    },
+    {
+      "ts": "2026-09-16T20:36:31.322220Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.36,
+      "clob_down_ask": 0.68,
+      "seconds_left": 209.70011591911316,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:31.322234Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.36,
+      "clob_down_ask": 0.68,
+      "seconds_left": 209.70011591911316
+    },
+    {
+      "ts": "2026-09-16T20:36:37.429450Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.34,
+      "clob_down_ask": 0.52,
+      "seconds_left": 203.3563210964203,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:37.429473Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.34,
+      "clob_down_ask": 0.52,
+      "seconds_left": 203.3563210964203
+    },
+    {
+      "ts": "2026-09-16T20:36:46.703226Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.45,
+      "clob_down_ask": 0.56,
+      "seconds_left": 194.22011923789978,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:46.703251Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.45,
+      "clob_down_ask": 0.56,
+      "seconds_left": 194.22011923789978
+    },
+    {
+      "ts": "2026-09-16T20:36:52.862751Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.48,
+      "clob_down_ask": 0.53,
+      "seconds_left": 187.95012283325195,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:52.862773Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.48,
+      "clob_down_ask": 0.53,
+      "seconds_left": 187.95012283325195
+    },
+    {
+      "ts": "2026-09-16T20:36:59.151799Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.43,
+      "clob_down_ask": 0.58,
+      "seconds_left": 181.78940510749817,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:36:59.151907Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.43,
+      "clob_down_ask": 0.58,
+      "seconds_left": 181.78940510749817
+    },
+    {
+      "ts": "2026-09-16T20:37:05.273865Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.43,
+      "clob_down_ask": 0.58,
+      "seconds_left": 175.55034375190735,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:37:05.273880Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.43,
+      "clob_down_ask": 0.58,
+      "seconds_left": 175.55034375190735
+    },
+    {
+      "ts": "2026-09-16T20:37:11.444263Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.44,
+      "clob_down_ask": 0.57,
+      "seconds_left": 169.35422563552856,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T20:37:11.444290Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.44,
+      "clob_down_ask": 0.57,
+      "seconds_left": 169.35422563552856
+    },
+    {
+      "ts": "2026-09-16T20:37:20.527303Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.47,
+      "clob_down_ask": 0.54,
+      "seconds_left": 160.2535982131958,
+      "min_spread": 0.009999999999999953
+    },
+    {
+      "ts": "2026-09-16T20:37:20.527331Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.47,
+      "clob_down_ask": 0.54,
+      "seconds_left": 160.2535982131958
+    },
+    {
+      "ts": "2026-09-16T20:37:26.699064Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.47,
+      "clob_down_ask": 0.56,
+      "seconds_left": 154.12557101249695,
+      "min_spread": 0.009999999999999953
+    },
+    {
+      "ts": "2026-09-16T20:37:26.699219Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.47,
+      "clob_down_ask": 0.56,
+      "seconds_left": 154.12557101249695
+    },
+    {
+      "ts": "2026-09-16T20:37:32.847604Z",
+      "slug": "btc-updown-5m-1789590900",
+      "status": "heartbeat",
+      "gamma_up": 0.705,
+      "gamma_down": 0.295,
+      "clob_up_ask": 0.15,
+      "clob_down_ask": 0.86,
+      "seconds_left": 147.95815086364746,
+      "min_spread": 0.009999999999999981
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789590900\", \"force_side\": \"DOWN\", \"token_id\": \"98335668340541452331481580091148321178495405991833087759493320407871424428670\", \"entry_price\": 0.85, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 427.7795, \"collateral_pusd\": 19.791544, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xe32adcf23853557aa543525324d46f232668580ffbcd2403ce9119c83c972f35\", \"takingAmount\": \"5.681816\", \"makingAmount\": \"4.999998\", \"status\": \"matched\", \"transactionsHashes\": [\"0x6ac2c665cc7b80e3f3172e869ed570331b85bcf76f63c9786c93fe9a2ead9696\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T20:37:38.176375Z",
+    "market_slug": "btc-updown-5m-1789590900",
+    "market_end_iso": "2026-09-16T20:40:00Z",
+    "side": "DOWN",
+    "token_id": "98335668340541452331481580091148321178495405991833087759493320407871424428670",
+    "entry_price": 0.85,
+    "shares": 5.681816,
+    "cost_usdc": 4.999998,
+    "open_order_id": "0xe32adcf23853557aa543525324d46f232668580ffbcd2403ce9119c83c972f35",
+    "open_tx": "0x6ac2c665cc7b80e3f3172e869ed570331b85bcf76f63c9786c93fe9a2ead9696"
+  },
+  "stop_loss_price": 0.08499999999999998,
+  "last_side_price": 0.295,
+  "last_check_at": "2026-09-16T20:39:32.894752Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T20:39:45.584711Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789590900\", \"token_id\": \"98335668340541452331481580091148321178495405991833087759493320407871424428670\", \"requested_shares\": 5.681816, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 5.681816, \"sell_shares\": 5.6818, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x490b77c115ced610b2ddb0821c8b0c9c2b6d3847e649063349b6e9588ece5d41\", \"takingAmount\": \"5.6232\", \"makingAmount\": \"5.68\", \"status\": \"matched\", \"transactionsHashes\": [\"0xa307f6041783de4496c382d02ab41f864cf7da53dd1dd16a402176c6303c72b6\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T20:39:45.584734Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0x490b77c115ced610b2ddb0821c8b0c9c2b6d3847e649063349b6e9588ece5d41",
+    "close_tx": "0xa307f6041783de4496c382d02ab41f864cf7da53dd1dd16a402176c6303c72b6",
+    "close_shares": 5.68,
+    "close_usdc": 5.6232,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 0.623202,
+  "finished_at": "2026-09-16T20:39:45.584749Z",
+  "result": "done"
+}
+[2026-09-16T20:39:45Z] session_end rc=0 trades=3 stake_usd=5.0
+journal_ok trades=114 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T20:41:03Z] cash=20.368826
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T20:37:38.176375Z", "applied": 1}
+[2026-09-16T20:41:11Z] session_begin trades=3 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T20:41:11.763697Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T20:41:12.859760Z",
+      "slug": "btc-updown-5m-1789591200",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.37,
+      "clob_down_ask": 0.64,
+      "seconds_left": 227.91688418388367,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:41:12.859790Z",
+      "slug": "btc-updown-5m-1789591200",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.37,
+      "clob_down_ask": 0.64,
+      "seconds_left": 227.91688418388367
+    },
+    {
+      "ts": "2026-09-16T20:41:19.189123Z",
+      "slug": "btc-updown-5m-1789591200",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.35,
+      "clob_down_ask": 0.67,
+      "seconds_left": 221.8294939994812,
+      "min_spread": 0.009999999999999953
+    },
+    {
+      "ts": "2026-09-16T20:41:19.189148Z",
+      "slug": "btc-updown-5m-1789591200",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.35,
+      "clob_down_ask": 0.67,
+      "seconds_left": 221.8294939994812
+    },
+    {
+      "ts": "2026-09-16T20:41:28.270433Z",
+      "slug": "btc-updown-5m-1789591200",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.25,
+      "clob_down_ask": 0.78,
+      "seconds_left": 212.54902601242065,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:41:39.788844Z",
+      "slug": "btc-updown-5m-1789591200",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.22,
+      "clob_down_ask": 0.79,
+      "seconds_left": 201.00601482391357,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "last_open_try": "{\"error\": \"PolyApiException[status_code=400, error_message={'error': 'no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.', 'orderID': '0xed4598a357ef589e95705c5f2925965ad8fd086aa597049229f9dc1703dcc945'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=400, error_message={'error': 'no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.', 'orderID': '0xed4598a357ef589e95705c5f2925965ad8fd086aa597049229f9dc1703dcc945'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/order body={\"error\":\"no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.\",\"orderID\":\"0xed4598a357ef589e95705c5f2925965ad8fd086aa597049229f9dc1703dcc945\"}\n",
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789591200\", \"force_side\": \"DOWN\", \"token_id\": \"74546332809002365776899656113762347351212793889655103343512421658262362078632\", \"entry_price\": 0.79, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 139.2217, \"collateral_pusd\": 20.368826, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x1df2cdf9f4b41ab222f8791ec4f44ca43add7f712c8ec599d8a817f0e7dae52f\", \"takingAmount\": \"5.952381\", \"makingAmount\": \"5\", \"status\": \"matched\", \"transactionsHashes\": [\"0x621aaf2661cca2c0080cb9c2770657a1b8ab6e5aa8a1882db46aa55896f2de23\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T20:41:44.860617Z",
+    "market_slug": "btc-updown-5m-1789591200",
+    "market_end_iso": "2026-09-16T20:45:00Z",
+    "side": "DOWN",
+    "token_id": "74546332809002365776899656113762347351212793889655103343512421658262362078632",
+    "entry_price": 0.79,
+    "shares": 5.952381,
+    "cost_usdc": 5.0,
+    "open_order_id": "0x1df2cdf9f4b41ab222f8791ec4f44ca43add7f712c8ec599d8a817f0e7dae52f",
+    "open_tx": "0x621aaf2661cca2c0080cb9c2770657a1b8ab6e5aa8a1882db46aa55896f2de23"
+  },
+  "stop_loss_price": 0.07899999999999999,
+  "last_side_price": 0.605,
+  "last_check_at": "2026-09-16T20:44:38.501305Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T20:44:48.243478Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:44:53.951248Z",
+      "attempt": 2,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:02.178254Z",
+      "attempt": 3,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:07.496015Z",
+      "attempt": 4,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:13.048200Z",
+      "attempt": 5,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:18.311233Z",
+      "attempt": 6,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:24.289610Z",
+      "attempt": 7,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:30.136256Z",
+      "attempt": 8,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:38.367414Z",
+      "attempt": 9,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:43.478005Z",
+      "attempt": 10,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:49.153985Z",
+      "attempt": 11,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:54.480061Z",
+      "attempt": 12,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:45:59.908260Z",
+      "attempt": 13,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:05.272525Z",
+      "attempt": 14,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:14.579158Z",
+      "attempt": 15,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:20.336605Z",
+      "attempt": 16,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:25.677142Z",
+      "attempt": 17,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:30.942704Z",
+      "attempt": 18,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:36.157715Z",
+      "attempt": 19,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:41.381996Z",
+      "attempt": 20,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:49.493112Z",
+      "attempt": 21,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:46:54.758851Z",
+      "attempt": 22,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:00.140160Z",
+      "attempt": 23,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:05.396978Z",
+      "attempt": 24,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:10.683808Z",
+      "attempt": 25,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:16.516799Z",
+      "attempt": 26,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:24.958232Z",
+      "attempt": 27,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:30.265334Z",
+      "attempt": 28,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:35.985945Z",
+      "attempt": 29,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T20:47:41.297769Z",
+      "attempt": 30,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"error\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={\"error\":\"No orderbook exists for the requested token id\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T20:47:43.298055Z",
+    "close_success": false,
+    "close_status": "error",
+    "close_order_id": null,
+    "close_tx": null,
+    "close_shares": 0.0,
+    "close_usdc": 0.0,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": null,
+  "finished_at": "2026-09-16T20:47:43.298101Z",
+  "result": "done"
+}
+[2026-09-16T20:47:43Z] session_end rc=0 trades=4 stake_usd=5.0
+journal_ok trades=115 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T20:49:19Z] cash=15.312826
+{"martingale": true, "next_stake": 10.0, "loss_streak": 1, "last_outcome": "loss", "last_opened_at": "2026-09-16T20:41:44.860617Z", "applied": 1}
+[2026-09-16T20:49:27Z] session_begin trades=4 stake_usd=10.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T20:49:27.951821Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 10.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T20:49:28.268237Z",
+      "slug": "btc-updown-5m-1789591500",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 31.731770515441895,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T20:49:33.587576Z",
+      "slug": "btc-updown-5m-1789591500",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 26.41243004798889,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T20:49:38.906465Z",
+      "slug": "btc-updown-5m-1789591500",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 21.09354043006897,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T20:49:47.156757Z",
+      "slug": "btc-updown-5m-1789591500",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 12.84324836730957,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T20:49:52.541294Z",
+      "slug": "btc-updown-5m-1789591500",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 7.458712100982666,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T20:49:57.857050Z",
+      "status": "heartbeat_no_current_market"
+    },
+    {
+      "ts": "2026-09-16T20:50:03.962017Z",
+      "slug": "btc-updown-5m-1789591800",
+      "status": "heartbeat",
+      "gamma_up": 0.495,
+      "gamma_down": 0.505,
+      "clob_up_ask": 0.45,
+      "clob_down_ask": 0.59,
+      "seconds_left": 296.8343801498413,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:50:03.962044Z",
+      "slug": "btc-updown-5m-1789591800",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.45,
+      "clob_down_ask": 0.59,
+      "seconds_left": 296.8343801498413
+    },
+    {
+      "ts": "2026-09-16T20:50:10.104276Z",
+      "slug": "btc-updown-5m-1789591800",
+      "status": "heartbeat",
+      "gamma_up": 0.495,
+      "gamma_down": 0.505,
+      "clob_up_ask": 0.3,
+      "clob_down_ask": 0.71,
+      "seconds_left": 290.73958253860474,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789591800\", \"force_side\": \"DOWN\", \"token_id\": \"41947267946822140503267643063174099489883401813393258797984796624777363213910\", \"entry_price\": 0.71, \"notional_usd\": 10.0, \"top_ask_notional_usd\": 331.712, \"collateral_pusd\": 15.312826, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x93c9638a0fb4681c9c9b8e88d0f6629777c4242f6a7079926cf0af0e6eb36f6e\", \"takingAmount\": \"14.084506\", \"makingAmount\": \"9.999999\", \"status\": \"matched\", \"transactionsHashes\": [\"0xe9efb318df79b66682df3f5dc1be1b079cca5c1dfcdb42ccec03891f80488c78\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T20:50:18.028014Z",
+    "market_slug": "btc-updown-5m-1789591800",
+    "market_end_iso": "2026-09-16T20:55:00Z",
+    "side": "DOWN",
+    "token_id": "41947267946822140503267643063174099489883401813393258797984796624777363213910",
+    "entry_price": 0.71,
+    "shares": 14.084506,
+    "cost_usdc": 9.999999,
+    "open_order_id": "0x93c9638a0fb4681c9c9b8e88d0f6629777c4242f6a7079926cf0af0e6eb36f6e",
+    "open_tx": "0xe9efb318df79b66682df3f5dc1be1b079cca5c1dfcdb42ccec03891f80488c78"
+  },
+  "stop_loss_price": 0.07099999999999998,
+  "last_side_price": 0.895,
+  "last_check_at": "2026-09-16T20:54:37.501858Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T20:54:47.269906Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789591800\", \"token_id\": \"41947267946822140503267643063174099489883401813393258797984796624777363213910\", \"requested_shares\": 14.084506, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 14.084506, \"sell_shares\": 14.0845, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x097fd4b152c6a01fd943bbac5f14f777c87a7cb0d2d39445c75e46f35e2c51b6\", \"takingAmount\": \"13.9392\", \"makingAmount\": \"14.08\", \"status\": \"matched\", \"transactionsHashes\": [\"0x18bfb3cb7873282894b5d4ac96fbe4c9afcd7a993d4fecd749f952d20c4ef4d1\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T20:54:47.269925Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0x097fd4b152c6a01fd943bbac5f14f777c87a7cb0d2d39445c75e46f35e2c51b6",
+    "close_tx": "0x18bfb3cb7873282894b5d4ac96fbe4c9afcd7a993d4fecd749f952d20c4ef4d1",
+    "close_shares": 14.08,
+    "close_usdc": 13.9392,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 3.939201,
+  "finished_at": "2026-09-16T20:54:47.269939Z",
+  "result": "done"
+}
+[2026-09-16T20:54:47Z] session_end rc=0 trades=5 stake_usd=10.0
+journal_ok trades=116 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T20:56:21Z] cash=19.039287
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T20:50:18.028014Z", "applied": 1}
+[2026-09-16T20:56:29Z] session_begin trades=5 stake_usd=5.0
+[py_clob_client_v2] request error: [Errno -3] Temporary failure in name resolution
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T20:56:30.121025Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T20:56:58.393239Z",
+      "slug": "btc-updown-5m-1789592100",
+      "status": "skip_clob_unavailable",
+      "error": "PolyApiException[status_code=None, error_message=Request exception!]"
+    },
+    {
+      "ts": "2026-09-16T20:57:04.488800Z",
+      "slug": "btc-updown-5m-1789592100",
+      "status": "heartbeat",
+      "gamma_up": 0.525,
+      "gamma_down": 0.475,
+      "clob_up_ask": 0.85,
+      "clob_down_ask": 0.16,
+      "seconds_left": 176.2886507511139,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T20:57:11.987254Z",
+      "slug": "btc-updown-5m-1789592100",
+      "status": "heartbeat",
+      "gamma_up": 0.525,
+      "gamma_down": 0.475,
+      "clob_up_ask": 0.89,
+      "clob_down_ask": 0.12,
+      "seconds_left": 168.81740283966064,
+      "min_spread": 0.009999999999999995
+    }
+  ],
+  "last_open_try": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789592100\", \"force_side\": \"UP\", \"token_id\": \"22927038658242812797078579959471068564931610936464739088835052798358088903340\", \"entry_price\": 0.86, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 0.8772, \"skipped\": \"thin_top_ask\", \"order_post_result\": {\"success\": false, \"status\": \"skipped\", \"errorMsg\": \"thin_top_ask\"}}\n\n",
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789592100\", \"force_side\": \"UP\", \"token_id\": \"22927038658242812797078579959471068564931610936464739088835052798358088903340\", \"entry_price\": 0.89, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 155.394, \"collateral_pusd\": 19.039287, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x6bed99a0ce438681005688f9964d320929d81f4aebb2fd25708b440294a977a7\", \"takingAmount\": \"5.681819\", \"makingAmount\": \"5\", \"status\": \"matched\", \"transactionsHashes\": [\"0x709e02344b0c6b2edb8124ea863705dcc8cf45cecbcd904990cb02f0340152bb\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T20:57:16.743479Z",
+    "market_slug": "btc-updown-5m-1789592100",
+    "market_end_iso": "2026-09-16T21:00:00Z",
+    "side": "UP",
+    "token_id": "22927038658242812797078579959471068564931610936464739088835052798358088903340",
+    "entry_price": 0.89,
+    "shares": 5.681819,
+    "cost_usdc": 5.0,
+    "open_order_id": "0x6bed99a0ce438681005688f9964d320929d81f4aebb2fd25708b440294a977a7",
+    "open_tx": "0x709e02344b0c6b2edb8124ea863705dcc8cf45cecbcd904990cb02f0340152bb"
+  },
+  "stop_loss_price": 0.08899999999999998,
+  "last_side_price": 0.965,
+  "last_check_at": "2026-09-16T20:59:36.715745Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T20:59:50.186140Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789592100\", \"token_id\": \"22927038658242812797078579959471068564931610936464739088835052798358088903340\", \"requested_shares\": 5.681819, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 5.681819, \"sell_shares\": 5.6818, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x0d86396e6e9e9eb8b9c1faca79184c86982f2bfee3e3c8ccfd907318b8baf31b\", \"takingAmount\": \"5.6232\", \"makingAmount\": \"5.68\", \"status\": \"matched\", \"transactionsHashes\": [\"0x213f502b38d587203e697bdd3a179eeb24f5c7ed46d377b0bb2361b40cb3dfd7\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T20:59:50.186161Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0x0d86396e6e9e9eb8b9c1faca79184c86982f2bfee3e3c8ccfd907318b8baf31b",
+    "close_tx": "0x213f502b38d587203e697bdd3a179eeb24f5c7ed46d377b0bb2361b40cb3dfd7",
+    "close_shares": 5.68,
+    "close_usdc": 5.6232,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 0.6232,
+  "finished_at": "2026-09-16T20:59:50.186175Z",
+  "result": "done"
+}
+[2026-09-16T20:59:50Z] session_end rc=0 trades=6 stake_usd=5.0
+journal_ok trades=117 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:01:07Z] cash=19.616557
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T20:57:16.743479Z", "applied": 1}
+[2026-09-16T21:01:15Z] session_begin trades=6 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T21:01:16.433517Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T21:01:17.497463Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "heartbeat",
+      "gamma_up": 0.495,
+      "gamma_down": 0.505,
+      "clob_up_ask": 0.38,
+      "clob_down_ask": 0.63,
+      "seconds_left": 223.2862367630005,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:01:17.497492Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.38,
+      "clob_down_ask": 0.63,
+      "seconds_left": 223.2862367630005
+    },
+    {
+      "ts": "2026-09-16T21:01:23.685107Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "heartbeat",
+      "gamma_up": 0.495,
+      "gamma_down": 0.505,
+      "clob_up_ask": 0.36,
+      "clob_down_ask": 0.65,
+      "seconds_left": 217.13122296333313,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:01:23.685135Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.36,
+      "clob_down_ask": 0.65,
+      "seconds_left": 217.13122296333313
+    },
+    {
+      "ts": "2026-09-16T21:01:32.714352Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.61,
+      "seconds_left": 208.04042267799377,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:01:32.714376Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.61,
+      "seconds_left": 208.04042267799377
+    },
+    {
+      "ts": "2026-09-16T21:01:38.856766Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.62,
+      "seconds_left": 201.94165778160095,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:01:38.856783Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.62,
+      "seconds_left": 201.94165778160095
+    },
+    {
+      "ts": "2026-09-16T21:01:45.045084Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.33,
+      "clob_down_ask": 0.68,
+      "seconds_left": 195.83409667015076,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:01:45.045107Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.33,
+      "clob_down_ask": 0.68,
+      "seconds_left": 195.83409667015076
+    },
+    {
+      "ts": "2026-09-16T21:01:51.188764Z",
+      "slug": "btc-updown-5m-1789592400",
+      "status": "heartbeat",
+      "gamma_up": 0.395,
+      "gamma_down": 0.605,
+      "clob_up_ask": 0.26,
+      "clob_down_ask": 0.75,
+      "seconds_left": 189.61048984527588,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789592400\", \"force_side\": \"DOWN\", \"token_id\": \"14700496033156153608080077539511106855778329230003244669668020123262078084893\", \"entry_price\": 0.75, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 492.7575, \"collateral_pusd\": 19.616557, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x1c22b5eaca8482effd267c8a46c57e97aa79c7cd20f35f23211dfa7a6069300c\", \"takingAmount\": \"6.666664\", \"makingAmount\": \"4.999998\", \"status\": \"matched\", \"transactionsHashes\": [\"0xe2ad5771a72632c5e1c6a3183a1c6974f28a2a5f13e05401e1a9b29e0d88f0c4\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T21:01:56.401613Z",
+    "market_slug": "btc-updown-5m-1789592400",
+    "market_end_iso": "2026-09-16T21:05:00Z",
+    "side": "DOWN",
+    "token_id": "14700496033156153608080077539511106855778329230003244669668020123262078084893",
+    "entry_price": 0.75,
+    "shares": 6.666664,
+    "cost_usdc": 4.999998,
+    "open_order_id": "0x1c22b5eaca8482effd267c8a46c57e97aa79c7cd20f35f23211dfa7a6069300c",
+    "open_tx": "0xe2ad5771a72632c5e1c6a3183a1c6974f28a2a5f13e05401e1a9b29e0d88f0c4"
+  },
+  "stop_loss_price": 0.07499999999999998,
+  "last_side_price": 0.605,
+  "last_check_at": "2026-09-16T21:04:35.150038Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T21:04:44.907560Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789592400\", \"token_id\": \"14700496033156153608080077539511106855778329230003244669668020123262078084893\", \"requested_shares\": 6.666664, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 6.666664, \"sell_shares\": 6.6666, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x3754fc6b732d48b0434039ac4164df77ae7eebbafcec50b1ffd68a374db229e7\", \"takingAmount\": \"6.5934\", \"makingAmount\": \"6.66\", \"status\": \"matched\", \"transactionsHashes\": [\"0xa8c9da40d240163cf21c11588ce3b331d1772fbacb2f8d5cf59c58fc5554d147\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T21:04:44.907587Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0x3754fc6b732d48b0434039ac4164df77ae7eebbafcec50b1ffd68a374db229e7",
+    "close_tx": "0xa8c9da40d240163cf21c11588ce3b331d1772fbacb2f8d5cf59c58fc5554d147",
+    "close_shares": 6.66,
+    "close_usdc": 6.5934,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 1.593402,
+  "finished_at": "2026-09-16T21:04:44.907607Z",
+  "result": "done"
+}
+[2026-09-16T21:04:44Z] session_end rc=0 trades=7 stake_usd=5.0
+journal_ok trades=118 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:06:01Z] cash=21.117859
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T21:01:56.401613Z", "applied": 1}
+[2026-09-16T21:06:09Z] session_begin trades=7 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T21:06:10.277850Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T21:06:11.408897Z",
+      "slug": "btc-updown-5m-1789592700",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.78,
+      "clob_down_ask": 0.23,
+      "seconds_left": 229.41640663146973,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:06:52.902734Z",
+      "status": "heartbeat_no_current_market"
+    },
+    {
+      "ts": "2026-09-16T21:06:59.093270Z",
+      "slug": "btc-updown-5m-1789592700",
+      "status": "heartbeat",
+      "gamma_up": 0.855,
+      "gamma_down": 0.145,
+      "clob_up_ask": 0.83,
+      "clob_down_ask": 0.18,
+      "seconds_left": 181.73931741714478,
+      "min_spread": 0.009999999999999981
+    }
+  ],
+  "last_open_try": "{\"error\": \"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Max retries exceeded with url: /events?slug=btc-updown-5m-1789592700 (Caused by NameResolutionError(\\\"HTTPSConnection(host='gamma-api.polymarket.com', port=443): Failed to resolve 'gamma-api.polymarket.com' ([Errno -3] Temporary failure in name resolution)\\\"))\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Max retries exceeded with url: /events?slug=btc-updown-5m-1789592700 (Caused by NameResolutionError(\\\"HTTPSConnection(host='gamma-api.polymarket.com', port=443): Failed to resolve 'gamma-api.polymarket.com' ([Errno -3] Temporary failure in name resolution)\\\"))\"}, \"close_skipped\": \"\"}\n\n",
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789592700\", \"force_side\": \"UP\", \"token_id\": \"59841760065462924994841769602413402615462364866089693503168331855066552125721\", \"entry_price\": 0.82, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 155.64419999999998, \"collateral_pusd\": 21.117859, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xf989ddd004857d9789ef50925cd846ee96da466a7441564a89b0d5f0f44bea93\", \"takingAmount\": \"6.410254\", \"makingAmount\": \"4.999998\", \"status\": \"matched\", \"transactionsHashes\": [\"0xbd5e3239a8c856b4da649828419182ffd013b64fa660672283c3366420f7ac87\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T21:07:04.087630Z",
+    "market_slug": "btc-updown-5m-1789592700",
+    "market_end_iso": "2026-09-16T21:10:00Z",
+    "side": "UP",
+    "token_id": "59841760065462924994841769602413402615462364866089693503168331855066552125721",
+    "entry_price": 0.82,
+    "shares": 6.410254,
+    "cost_usdc": 4.999998,
+    "open_order_id": "0xf989ddd004857d9789ef50925cd846ee96da466a7441564a89b0d5f0f44bea93",
+    "open_tx": "0xbd5e3239a8c856b4da649828419182ffd013b64fa660672283c3366420f7ac87"
+  },
+  "stop_loss_price": 0.08199999999999998,
+  "last_side_price": 0.855,
+  "last_check_at": "2026-09-16T21:09:35.092182Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T21:09:44.473741Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:09:52.739377Z",
+      "attempt": 2,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:09:58.355856Z",
+      "attempt": 3,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:04.439032Z",
+      "attempt": 4,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:09.795753Z",
+      "attempt": 5,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:15.042079Z",
+      "attempt": 6,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:23.343425Z",
+      "attempt": 7,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:28.708731Z",
+      "attempt": 8,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:34.474238Z",
+      "attempt": 9,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:39.745604Z",
+      "attempt": 10,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:45.059094Z",
+      "attempt": 11,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:50.498205Z",
+      "attempt": 12,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:10:59.273736Z",
+      "attempt": 13,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:04.652255Z",
+      "attempt": 14,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:09.876884Z",
+      "attempt": 15,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:15.186302Z",
+      "attempt": 16,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:20.500932Z",
+      "attempt": 17,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:25.794743Z",
+      "attempt": 18,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:34.016178Z",
+      "attempt": 19,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:39.223261Z",
+      "attempt": 20,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:44.601536Z",
+      "attempt": 21,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:49.869615Z",
+      "attempt": 22,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:11:55.368963Z",
+      "attempt": 23,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:01.349107Z",
+      "attempt": 24,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:09.616387Z",
+      "attempt": 25,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:14.910269Z",
+      "attempt": 26,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:20.271670Z",
+      "attempt": 27,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:25.632177Z",
+      "attempt": 28,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:30.985915Z",
+      "attempt": 29,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:12:36.295967Z",
+      "attempt": 30,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"error\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={\"error\":\"No orderbook exists for the requested token id\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T21:12:38.296158Z",
+    "close_success": false,
+    "close_status": "error",
+    "close_order_id": null,
+    "close_tx": null,
+    "close_shares": 0.0,
+    "close_usdc": 0.0,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": null,
+  "finished_at": "2026-09-16T21:12:38.296206Z",
+  "result": "done"
+}
+[2026-09-16T21:12:38Z] session_end rc=0 trades=8 stake_usd=5.0
+journal_ok trades=119 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:13:42Z] cash=16.040871
+{"martingale": true, "next_stake": 10.0, "loss_streak": 1, "last_outcome": "loss", "last_opened_at": "2026-09-16T21:07:04.087630Z", "applied": 1}
+[2026-09-16T21:13:50Z] session_begin trades=8 stake_usd=10.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T21:13:51.358697Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 10.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T21:13:52.473341Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "heartbeat",
+      "gamma_up": 0.31,
+      "gamma_down": 0.69,
+      "clob_up_ask": 0.01,
+      "clob_down_ask": null,
+      "seconds_left": 68.31731605529785,
+      "min_spread": null
+    },
+    {
+      "ts": "2026-09-16T21:13:52.473369Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.01,
+      "clob_down_ask": null,
+      "seconds_left": 68.31731605529785
+    },
+    {
+      "ts": "2026-09-16T21:13:58.651661Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "heartbeat",
+      "gamma_up": 0.31,
+      "gamma_down": 0.69,
+      "clob_up_ask": 0.01,
+      "clob_down_ask": null,
+      "seconds_left": 62.21009135246277,
+      "min_spread": null
+    },
+    {
+      "ts": "2026-09-16T21:13:58.651687Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.01,
+      "clob_down_ask": null,
+      "seconds_left": 62.21009135246277
+    },
+    {
+      "ts": "2026-09-16T21:14:04.109632Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 55.89037227630615,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:13.772656Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 46.22734761238098,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:19.118377Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 40.881630420684814,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:24.461853Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 35.53815174102783,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:29.772733Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 30.22727346420288,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:35.075253Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 24.92475152015686,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:40.444667Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 19.555338144302368,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:48.720089Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 11.279917001724243,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:54.045707Z",
+      "slug": "btc-updown-5m-1789593000",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 5.954299688339233,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:14:59.352258Z",
+      "status": "heartbeat_no_current_market"
+    },
+    {
+      "ts": "2026-09-16T21:15:05.420524Z",
+      "slug": "btc-updown-5m-1789593300",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.73,
+      "clob_down_ask": 0.33,
+      "seconds_left": 295.3442552089691,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789593300\", \"force_side\": \"UP\", \"token_id\": \"65708203174136683287370840369133415224339573908037473979060295266532352166874\", \"entry_price\": 0.69, \"notional_usd\": 10.0, \"top_ask_notional_usd\": 37.949999999999996, \"collateral_pusd\": 16.040871, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xce2722bcea8ed093a16b6ebbec882dc07ab0fbd12017ff00c2dca5057cbf5f72\", \"takingAmount\": \"14.492754\", \"makingAmount\": \"10\", \"status\": \"matched\", \"transactionsHashes\": [\"0x023d8a876c6fe985aea74c1c02679b9385cb370ea75baf5113a38e4f67ba83ee\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T21:15:10.267558Z",
+    "market_slug": "btc-updown-5m-1789593300",
+    "market_end_iso": "2026-09-16T21:20:00Z",
+    "side": "UP",
+    "token_id": "65708203174136683287370840369133415224339573908037473979060295266532352166874",
+    "entry_price": 0.69,
+    "shares": 14.492754,
+    "cost_usdc": 10.0,
+    "open_order_id": "0xce2722bcea8ed093a16b6ebbec882dc07ab0fbd12017ff00c2dca5057cbf5f72",
+    "open_tx": "0x023d8a876c6fe985aea74c1c02679b9385cb370ea75baf5113a38e4f67ba83ee"
+  },
+  "stop_loss_price": 0.06899999999999998,
+  "last_side_price": 0.815,
+  "last_check_at": "2026-09-16T21:19:37.230438Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T21:19:47.441489Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789593300\", \"token_id\": \"65708203174136683287370840369133415224339573908037473979060295266532352166874\", \"requested_shares\": 14.492754, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 14.492754, \"sell_shares\": 14.4927, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x7a19608b5522c966a8b4f39923b357992d02ab5ae6feac0d8466431707beec7b\", \"takingAmount\": \"14.3451\", \"makingAmount\": \"14.49\", \"status\": \"matched\", \"transactionsHashes\": [\"0x1770b14698f5c035bbbcda2134423981a88245a41728591b4fe2bea34aa21c29\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T21:19:47.441517Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0x7a19608b5522c966a8b4f39923b357992d02ab5ae6feac0d8466431707beec7b",
+    "close_tx": "0x1770b14698f5c035bbbcda2134423981a88245a41728591b4fe2bea34aa21c29",
+    "close_shares": 14.49,
+    "close_usdc": 14.3451,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 4.3451,
+  "finished_at": "2026-09-16T21:19:47.441537Z",
+  "result": "done"
+}
+[2026-09-16T21:19:47Z] session_end rc=0 trades=9 stake_usd=10.0
+journal_ok trades=120 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:21:06Z] cash=20.158931
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T21:15:10.267558Z", "applied": 1}
+[2026-09-16T21:21:14Z] session_begin trades=9 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T21:21:17.770520Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T21:21:33.888759Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.42,
+      "clob_down_ask": 0.57,
+      "seconds_left": 206.93548202514648,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T21:21:33.888773Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.42,
+      "clob_down_ask": 0.57,
+      "seconds_left": 206.93548202514648
+    },
+    {
+      "ts": "2026-09-16T21:21:39.985386Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.44,
+      "clob_down_ask": 0.66,
+      "seconds_left": 200.81506085395813,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:21:39.985413Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.44,
+      "clob_down_ask": 0.66,
+      "seconds_left": 200.81506085395813
+    },
+    {
+      "ts": "2026-09-16T21:21:46.161836Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.61,
+      "seconds_left": 194.654803276062,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:21:46.161868Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.61,
+      "seconds_left": 194.654803276062
+    },
+    {
+      "ts": "2026-09-16T21:21:55.223910Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.42,
+      "clob_down_ask": 0.57,
+      "seconds_left": 185.56447076797485,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T21:21:55.223936Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.42,
+      "clob_down_ask": 0.57,
+      "seconds_left": 185.56447076797485
+    },
+    {
+      "ts": "2026-09-16T21:22:01.310635Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.46,
+      "clob_down_ask": 0.53,
+      "seconds_left": 179.47846579551697,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:01.310662Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.46,
+      "clob_down_ask": 0.53,
+      "seconds_left": 179.47846579551697
+    },
+    {
+      "ts": "2026-09-16T21:22:07.545934Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.41,
+      "clob_down_ask": 0.6,
+      "seconds_left": 173.23484897613525,
+      "min_spread": 0.009999999999999953
+    },
+    {
+      "ts": "2026-09-16T21:22:07.545960Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.41,
+      "clob_down_ask": 0.6,
+      "seconds_left": 173.23484897613525
+    },
+    {
+      "ts": "2026-09-16T21:22:13.648737Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.37,
+      "clob_down_ask": 0.62,
+      "seconds_left": 167.149756193161,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:13.648760Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.37,
+      "clob_down_ask": 0.62,
+      "seconds_left": 167.149756193161
+    },
+    {
+      "ts": "2026-09-16T21:22:19.834168Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.61,
+      "seconds_left": 160.98826217651367,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:19.834193Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.4,
+      "clob_down_ask": 0.61,
+      "seconds_left": 160.98826217651367
+    },
+    {
+      "ts": "2026-09-16T21:22:28.999866Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.43,
+      "clob_down_ask": 0.59,
+      "seconds_left": 154.8326632976532,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:28.999891Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.43,
+      "clob_down_ask": 0.59,
+      "seconds_left": 154.8326632976532
+    },
+    {
+      "ts": "2026-09-16T21:22:35.214772Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.62,
+      "seconds_left": 145.68093013763428,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:35.214795Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.62,
+      "seconds_left": 145.68093013763428
+    },
+    {
+      "ts": "2026-09-16T21:22:41.356334Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.62,
+      "seconds_left": 139.43968224525452,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:41.356357Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.39,
+      "clob_down_ask": 0.62,
+      "seconds_left": 139.43968224525452
+    },
+    {
+      "ts": "2026-09-16T21:22:47.518785Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.37,
+      "clob_down_ask": 0.64,
+      "seconds_left": 133.289883852005,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:47.518806Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.37,
+      "clob_down_ask": 0.64,
+      "seconds_left": 133.289883852005
+    },
+    {
+      "ts": "2026-09-16T21:22:53.675751Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.33,
+      "clob_down_ask": 0.68,
+      "seconds_left": 127.12951588630676,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:22:53.675764Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.33,
+      "clob_down_ask": 0.68,
+      "seconds_left": 127.12951588630676
+    },
+    {
+      "ts": "2026-09-16T21:22:59.782424Z",
+      "slug": "btc-updown-5m-1789593600",
+      "status": "heartbeat",
+      "gamma_up": 0.425,
+      "gamma_down": 0.575,
+      "clob_up_ask": 0.27,
+      "clob_down_ask": 0.74,
+      "seconds_left": 121.0409288406372,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789593600\", \"force_side\": \"DOWN\", \"token_id\": \"75496211330922244529025889215262470954462818777535533777433720186033192635640\", \"entry_price\": 0.7, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 218.39999999999998, \"collateral_pusd\": 20.158931, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x05d159ecdc3c1a23dc67bcc96e34ae5b0912e600e1693160dff376f205f0ac91\", \"takingAmount\": \"7.246377\", \"makingAmount\": \"5\", \"status\": \"matched\", \"transactionsHashes\": [\"0x9a71c1bd9b5696f82ad38f2e4d62b9a61e75008fbd28fe9a837973e4adaf7e07\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T21:23:07.985770Z",
+    "market_slug": "btc-updown-5m-1789593600",
+    "market_end_iso": "2026-09-16T21:25:00Z",
+    "side": "DOWN",
+    "token_id": "75496211330922244529025889215262470954462818777535533777433720186033192635640",
+    "entry_price": 0.7,
+    "shares": 7.246377,
+    "cost_usdc": 5.0,
+    "open_order_id": "0x05d159ecdc3c1a23dc67bcc96e34ae5b0912e600e1693160dff376f205f0ac91",
+    "open_tx": "0x9a71c1bd9b5696f82ad38f2e4d62b9a61e75008fbd28fe9a837973e4adaf7e07"
+  },
+  "stop_loss_price": 0.06999999999999998,
+  "last_side_price": 0.575,
+  "last_check_at": "2026-09-16T21:24:38.656116Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T21:24:52.258035Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "matched",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"mode\": \"close\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789593600\", \"token_id\": \"75496211330922244529025889215262470954462818777535533777433720186033192635640\", \"requested_shares\": 7.246377, \"close_order_type\": \"FAK\", \"close_limit_price\": null, \"available_shares\": 7.246377, \"sell_shares\": 7.2463, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xfcfc767c82bdd9f3ef61efe33f27be8139a069794ee81916109da010cf4d827b\", \"takingAmount\": \"7.1676\", \"makingAmount\": \"7.24\", \"status\": \"matched\", \"transactionsHashes\": [\"0x8fa33b4de03a4cb25f03a0673dd751268d137934db4eef1f53816c3e2d8995c4\"], \"success\": true}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T21:24:52.258061Z",
+    "close_success": true,
+    "close_status": "matched",
+    "close_order_id": "0xfcfc767c82bdd9f3ef61efe33f27be8139a069794ee81916109da010cf4d827b",
+    "close_tx": "0x8fa33b4de03a4cb25f03a0673dd751268d137934db4eef1f53816c3e2d8995c4",
+    "close_shares": 7.24,
+    "close_usdc": 7.1676,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": 2.1676,
+  "finished_at": "2026-09-16T21:24:52.258081Z",
+  "result": "done"
+}
+[2026-09-16T21:24:52Z] session_end rc=0 trades=10 stake_usd=5.0
+journal_ok trades=121 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:26:11Z] cash=22.213021
+{"martingale": true, "next_stake": 5.0, "loss_streak": 0, "last_outcome": "win", "last_opened_at": "2026-09-16T21:23:07.985770Z", "applied": 1}
+[2026-09-16T21:26:19Z] session_begin trades=10 stake_usd=5.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T21:26:19.670519Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T21:26:20.727627Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.63,
+      "clob_down_ask": 0.38,
+      "seconds_left": 220.02674651145935,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:26:20.727674Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.63,
+      "clob_down_ask": 0.38,
+      "seconds_left": 220.02674651145935
+    },
+    {
+      "ts": "2026-09-16T21:26:26.831529Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.64,
+      "clob_down_ask": 0.37,
+      "seconds_left": 213.96945714950562,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:26:26.831554Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.64,
+      "clob_down_ask": 0.37,
+      "seconds_left": 213.96945714950562
+    },
+    {
+      "ts": "2026-09-16T21:26:32.945799Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.65,
+      "clob_down_ask": 0.36,
+      "seconds_left": 207.85049057006836,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:26:32.945823Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.65,
+      "clob_down_ask": 0.36,
+      "seconds_left": 207.85049057006836
+    },
+    {
+      "ts": "2026-09-16T21:26:42.127555Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.67,
+      "clob_down_ask": 0.34,
+      "seconds_left": 198.6381025314331,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:26:42.127579Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.67,
+      "clob_down_ask": 0.34,
+      "seconds_left": 198.6381025314331
+    },
+    {
+      "ts": "2026-09-16T21:26:48.210137Z",
+      "slug": "btc-updown-5m-1789593900",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.85,
+      "clob_down_ask": 0.14,
+      "seconds_left": 192.56292462348938,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789593900\", \"force_side\": \"UP\", \"token_id\": \"54650073229718433685151700561801648491663198617167300266577813246986954394950\", \"entry_price\": 0.87, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 1144.2501, \"collateral_pusd\": 22.213021, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x0be1fb517e968e6d9046f7f373a9e4ebc9ad6b13bac7569b0973e6e827a42db3\", \"takingAmount\": \"5.952381\", \"makingAmount\": \"5\", \"status\": \"matched\", \"transactionsHashes\": [\"0x6c319942ca77f0318d62262fff257fa6cbdfe79d14f9a81d5b0068e71879dba0\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T21:26:53.159855Z",
+    "market_slug": "btc-updown-5m-1789593900",
+    "market_end_iso": "2026-09-16T21:30:00Z",
+    "side": "UP",
+    "token_id": "54650073229718433685151700561801648491663198617167300266577813246986954394950",
+    "entry_price": 0.87,
+    "shares": 5.952381,
+    "cost_usdc": 5.0,
+    "open_order_id": "0x0be1fb517e968e6d9046f7f373a9e4ebc9ad6b13bac7569b0973e6e827a42db3",
+    "open_tx": "0x6c319942ca77f0318d62262fff257fa6cbdfe79d14f9a81d5b0068e71879dba0"
+  },
+  "stop_loss_price": 0.08699999999999998,
+  "last_side_price": 0.895,
+  "last_check_at": "2026-09-16T21:29:37.445235Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T21:29:46.808767Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:29:52.057583Z",
+      "attempt": 2,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:29:57.333118Z",
+      "attempt": 3,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:02.565171Z",
+      "attempt": 4,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:10.746297Z",
+      "attempt": 5,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:16.065477Z",
+      "attempt": 6,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:21.981080Z",
+      "attempt": 7,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:27.190501Z",
+      "attempt": 8,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:32.393214Z",
+      "attempt": 9,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:37.728169Z",
+      "attempt": 10,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:46.154571Z",
+      "attempt": 11,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:51.526474Z",
+      "attempt": 12,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:30:57.115199Z",
+      "attempt": 13,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:02.286116Z",
+      "attempt": 14,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:07.669246Z",
+      "attempt": 15,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:12.885414Z",
+      "attempt": 16,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:21.276740Z",
+      "attempt": 17,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:26.708161Z",
+      "attempt": 18,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:32.389829Z",
+      "attempt": 19,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:37.887683Z",
+      "attempt": 20,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:43.336476Z",
+      "attempt": 21,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:48.608023Z",
+      "attempt": 22,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:31:56.755098Z",
+      "attempt": 23,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:02.167501Z",
+      "attempt": 24,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:07.838183Z",
+      "attempt": 25,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:13.356886Z",
+      "attempt": 26,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:18.749753Z",
+      "attempt": 27,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:24.066908Z",
+      "attempt": 28,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:32.290705Z",
+      "attempt": 29,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:32:37.641395Z",
+      "attempt": 30,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"error\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={\"error\":\"No orderbook exists for the requested token id\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T21:32:39.641580Z",
+    "close_success": false,
+    "close_status": "error",
+    "close_order_id": null,
+    "close_tx": null,
+    "close_shares": 0.0,
+    "close_usdc": 0.0,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": null,
+  "finished_at": "2026-09-16T21:32:39.641621Z",
+  "result": "done"
+}
+[2026-09-16T21:32:39Z] session_end rc=0 trades=11 stake_usd=5.0
+journal_ok trades=122 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:33:44Z] cash=17.157021
+{"martingale": true, "next_stake": 10.0, "loss_streak": 1, "last_outcome": "loss", "last_opened_at": "2026-09-16T21:26:53.159855Z", "applied": 1}
+[2026-09-16T21:33:52Z] session_begin trades=11 stake_usd=10.0
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+{
+  "started_at": "2026-09-16T21:33:53.467266Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 10.0,
+    "stop_loss_pct": 0.9,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 60,
+    "entry_timeout_min": 12,
+    "poll_sec": 5.0,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "execute": true
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-16T21:33:54.627025Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "heartbeat",
+      "gamma_up": 0.685,
+      "gamma_down": 0.315,
+      "clob_up_ask": 0.57,
+      "clob_down_ask": 0.44,
+      "seconds_left": 66.16875433921814,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T21:33:54.627054Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.57,
+      "clob_down_ask": 0.44,
+      "seconds_left": 66.16875433921814
+    },
+    {
+      "ts": "2026-09-16T21:34:00.192338Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 59.80766820907593,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:05.566334Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 54.4336724281311,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:10.883562Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 49.116443157196045,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:19.127811Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 40.872191429138184,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:24.415682Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 35.5843243598938,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:29.749185Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 30.25082015991211,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:35.056740Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 24.943264961242676,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:40.378336Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 19.62166953086853,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:45.748469Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 14.251537084579468,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:54.041677Z",
+      "slug": "btc-updown-5m-1789594200",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 5.958327531814575,
+      "min_entry_seconds_left": 60
+    },
+    {
+      "ts": "2026-09-16T21:34:59.355422Z",
+      "status": "heartbeat_no_current_market"
+    },
+    {
+      "ts": "2026-09-16T21:35:05.557780Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.49,
+      "clob_down_ask": 0.52,
+      "seconds_left": 295.2859616279602,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:05.557804Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.49,
+      "clob_down_ask": 0.52,
+      "seconds_left": 295.2859616279602
+    },
+    {
+      "ts": "2026-09-16T21:35:11.662749Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.48,
+      "clob_down_ask": 0.54,
+      "seconds_left": 289.1318860054016,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:11.662774Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.48,
+      "clob_down_ask": 0.54,
+      "seconds_left": 289.1318860054016
+    },
+    {
+      "ts": "2026-09-16T21:35:17.841441Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.5,
+      "clob_down_ask": 0.51,
+      "seconds_left": 283.01336193084717,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:17.841468Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.5,
+      "clob_down_ask": 0.51,
+      "seconds_left": 283.01336193084717
+    },
+    {
+      "ts": "2026-09-16T21:35:23.967374Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.52,
+      "clob_down_ask": 0.49,
+      "seconds_left": 276.8412594795227,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:23.967403Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.52,
+      "clob_down_ask": 0.49,
+      "seconds_left": 276.8412594795227
+    },
+    {
+      "ts": "2026-09-16T21:35:33.029207Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.51,
+      "clob_down_ask": 0.5,
+      "seconds_left": 267.74419832229614,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:33.029236Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.51,
+      "clob_down_ask": 0.5,
+      "seconds_left": 267.74419832229614
+    },
+    {
+      "ts": "2026-09-16T21:35:39.292089Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.52,
+      "clob_down_ask": 0.49,
+      "seconds_left": 261.55800580978394,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:39.292116Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.52,
+      "clob_down_ask": 0.49,
+      "seconds_left": 261.55800580978394
+    },
+    {
+      "ts": "2026-09-16T21:35:45.440417Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.51,
+      "clob_down_ask": 0.5,
+      "seconds_left": 255.346289396286,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:45.440464Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.51,
+      "clob_down_ask": 0.5,
+      "seconds_left": 255.346289396286
+    },
+    {
+      "ts": "2026-09-16T21:35:51.683093Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.46,
+      "clob_down_ask": 0.55,
+      "seconds_left": 249.1156506538391,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:51.683117Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.46,
+      "clob_down_ask": 0.55,
+      "seconds_left": 249.1156506538391
+    },
+    {
+      "ts": "2026-09-16T21:35:57.733838Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.49,
+      "clob_down_ask": 0.52,
+      "seconds_left": 243.02108216285706,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:35:57.733864Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.49,
+      "clob_down_ask": 0.52,
+      "seconds_left": 243.02108216285706
+    },
+    {
+      "ts": "2026-09-16T21:36:06.742691Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.57,
+      "clob_down_ask": 0.44,
+      "seconds_left": 234.04849433898926,
+      "min_spread": 0.009999999999999898
+    },
+    {
+      "ts": "2026-09-16T21:36:06.742717Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.57,
+      "clob_down_ask": 0.44,
+      "seconds_left": 234.04849433898926
+    },
+    {
+      "ts": "2026-09-16T21:36:13.028658Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.41,
+      "seconds_left": 227.89579343795776,
+      "min_spread": 0.009999999999999953
+    },
+    {
+      "ts": "2026-09-16T21:36:13.028686Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.41,
+      "seconds_left": 227.89579343795776
+    },
+    {
+      "ts": "2026-09-16T21:36:19.069250Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.6,
+      "clob_down_ask": 0.41,
+      "seconds_left": 221.69162845611572,
+      "min_spread": 0.009999999999999953
+    },
+    {
+      "ts": "2026-09-16T21:36:19.069276Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.6,
+      "clob_down_ask": 0.41,
+      "seconds_left": 221.69162845611572
+    },
+    {
+      "ts": "2026-09-16T21:36:25.196193Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.4,
+      "seconds_left": 215.5880057811737,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:36:25.196221Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.4,
+      "seconds_left": 215.5880057811737
+    },
+    {
+      "ts": "2026-09-16T21:36:31.297466Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.59,
+      "clob_down_ask": 0.42,
+      "seconds_left": 209.49181270599365,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:36:31.297487Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.59,
+      "clob_down_ask": 0.42,
+      "seconds_left": 209.49181270599365
+    },
+    {
+      "ts": "2026-09-16T21:36:40.366784Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.62,
+      "clob_down_ask": 0.39,
+      "seconds_left": 200.40625953674316,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:36:40.366814Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.62,
+      "clob_down_ask": 0.39,
+      "seconds_left": 200.40625953674316
+    },
+    {
+      "ts": "2026-09-16T21:36:46.636414Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.4,
+      "seconds_left": 194.17944240570068,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:36:46.636444Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.4,
+      "seconds_left": 194.17944240570068
+    },
+    {
+      "ts": "2026-09-16T21:36:52.795929Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.4,
+      "seconds_left": 188.0361032485962,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:36:52.795941Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.4,
+      "seconds_left": 188.0361032485962
+    },
+    {
+      "ts": "2026-09-16T21:36:58.938183Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.38,
+      "seconds_left": 181.90514135360718,
+      "min_spread": 0.010000000000000009
+    },
+    {
+      "ts": "2026-09-16T21:36:58.938205Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "skip_price_below_threshold",
+      "threshold": 0.7,
+      "clob_up_ask": 0.61,
+      "clob_down_ask": 0.38,
+      "seconds_left": 181.90514135360718
+    },
+    {
+      "ts": "2026-09-16T21:37:05.089351Z",
+      "slug": "btc-updown-5m-1789594500",
+      "status": "heartbeat",
+      "gamma_up": 0.515,
+      "gamma_down": 0.485,
+      "clob_up_ask": 0.72,
+      "clob_down_ask": 0.29,
+      "seconds_left": 175.72805905342102,
+      "min_spread": 0.009999999999999953
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789594500\", \"force_side\": \"UP\", \"token_id\": \"68256998785012993947131069094080444827656393753656419802791574925196196718976\", \"entry_price\": 0.72, \"notional_usd\": 10.0, \"top_ask_notional_usd\": 344.2464, \"collateral_pusd\": 17.157021, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x5e9c74cb455f28856167ca5dd75d17ce9f5413a9105ddee291b19dc6289d954b\", \"takingAmount\": \"13.888889\", \"makingAmount\": \"10\", \"status\": \"matched\", \"transactionsHashes\": [\"0x1a81114ad8d2ef7d6cde93d6aec603446c01c5fa8e4f55b68f69dd7fe1db41ac\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-16T21:37:09.941442Z",
+    "market_slug": "btc-updown-5m-1789594500",
+    "market_end_iso": "2026-09-16T21:40:00Z",
+    "side": "UP",
+    "token_id": "68256998785012993947131069094080444827656393753656419802791574925196196718976",
+    "entry_price": 0.72,
+    "shares": 13.888889,
+    "cost_usdc": 10.0,
+    "open_order_id": "0x5e9c74cb455f28856167ca5dd75d17ce9f5413a9105ddee291b19dc6289d954b",
+    "open_tx": "0x1a81114ad8d2ef7d6cde93d6aec603446c01c5fa8e4f55b68f69dd7fe1db41ac"
+  },
+  "stop_loss_price": 0.07199999999999998,
+  "last_side_price": 0.515,
+  "last_check_at": "2026-09-16T21:39:33.881169Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-16T21:39:46.068841Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:39:51.440661Z",
+      "attempt": 2,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:39:56.812672Z",
+      "attempt": 3,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:02.165142Z",
+      "attempt": 4,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:07.622551Z",
+      "attempt": 5,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:15.999770Z",
+      "attempt": 6,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:21.328814Z",
+      "attempt": 7,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:26.683373Z",
+      "attempt": 8,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:31.935143Z",
+      "attempt": 9,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:37.242093Z",
+      "attempt": 10,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:42.428387Z",
+      "attempt": 11,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:50.755553Z",
+      "attempt": 12,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:40:56.159789Z",
+      "attempt": 13,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:01.576780Z",
+      "attempt": 14,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:07.032429Z",
+      "attempt": 15,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:12.409648Z",
+      "attempt": 16,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:35.620129Z",
+      "attempt": 17,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:40.824233Z",
+      "attempt": 18,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:46.134795Z",
+      "attempt": 19,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:51.418034Z",
+      "attempt": 20,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:41:59.725454Z",
+      "attempt": 21,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:05.088413Z",
+      "attempt": 22,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:10.408642Z",
+      "attempt": 23,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:15.770667Z",
+      "attempt": 24,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:21.151801Z",
+      "attempt": 25,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:26.597042Z",
+      "attempt": 26,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:35.180383Z",
+      "attempt": 27,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:42:40.907978Z",
+      "attempt": 28,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:43:01.027535Z",
+      "attempt": 29,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-16T21:43:06.438318Z",
+      "attempt": 30,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    }
+  ],
+  "close_raw": "{\"error\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=404, error_message={'error': 'No orderbook exists for the requested token id'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={\"error\":\"No orderbook exists for the requested token id\"}\n\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-16T21:43:11.388723Z",
+    "close_success": false,
+    "close_status": "error",
+    "close_order_id": null,
+    "close_tx": null,
+    "close_shares": 0.0,
+    "close_usdc": 0.0,
+    "close_skipped": ""
+  },
+  "realized_cashflow_pnl_usdc": null,
+  "finished_at": "2026-09-16T21:43:11.388755Z",
+  "result": "done"
+}
+[2026-09-16T21:43:11Z] session_end rc=0 trades=12 stake_usd=10.0
+journal_ok trades=123 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:45:05Z] cash=8.097379
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-16T21:45:22Z] cash_retry=8.097379
+[2026-09-16T21:45:22Z] stop_daily_loss start=17.630212 now=8.097379 pct=50
+[2026-09-16T21:45:22Z] loop_exit

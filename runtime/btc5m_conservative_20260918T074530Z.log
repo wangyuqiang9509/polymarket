@@ -1,0 +1,439 @@
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-18T07:45:32Z] start_cash=431.326347
+[2026-09-18T07:45:32Z] session_begin sessions=0 fills=0 stake_usd=40
+{
+  "started_at": "2026-09-18T07:45:36.124143Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 40.0,
+    "stop_loss_pct": 0.25,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 90,
+    "max_entry_seconds_left": 150,
+    "entry_timeout_min": 20,
+    "poll_sec": 2.0,
+    "max_ask": 0.85,
+    "expensive_ask": 0.8,
+    "expensive_after_wins": 3,
+    "clob_cut_bid": 0.4,
+    "clob_sl_min_bid": 0.45,
+    "early_flatten_sec": 45,
+    "early_flatten_bid": 0.55,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "no_gamma_sl": false,
+    "execute": true,
+    "win_streak": 1
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-18T07:45:36.605672Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 263.3943383693695,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:38.916759Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 261.0832476615906,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:41.235502Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 258.7645025253296,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:43.561649Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 256.4383590221405,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:45.893863Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 254.10614490509033,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:48.313499Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 251.686509847641,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:50.612669Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 249.38733863830566,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:52.921903Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 247.078138589859,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:55.310351Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 244.68965768814087,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:45:57.591456Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 242.40855169296265,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:00.040761Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 239.959246635437,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:02.352208Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 237.64779901504517,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:04.881107Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 235.11890172958374,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:07.179388Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 232.82062005996704,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:12.429542Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 227.57046580314636,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:14.795714Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 225.20429110527039,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:17.085260Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 222.91474413871765,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:19.388527Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 220.6114797592163,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:21.708139Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 218.29186820983887,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:24.028706Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 215.97130131721497,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:26.405935Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 213.5940718650818,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:28.785396Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 211.2146098613739,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:31.351586Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 208.64842081069946,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:33.749800Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 206.25020718574524,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:36.062672Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 203.93733310699463,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:38.392534Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 201.6074709892273,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:40.694458Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 199.30554962158203,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:43.375475Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 196.62452864646912,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:48.703512Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 191.29649209976196,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:51.101246Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 188.898761510849,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:53.486963Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 186.51304149627686,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:55.779301Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 184.22070717811584,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:46:58.105507Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 181.89449954032898,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:00.398085Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 179.60192203521729,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:02.726462Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 177.2735457420349,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:05.015837Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 174.98416709899902,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:07.479792Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 172.52021622657776,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:09.817437Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 170.1825704574585,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:12.122759Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 167.8772487640381,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:14.547946Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 165.45206356048584,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:16.840324Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 163.15968322753906,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:19.132049Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 160.86795806884766,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:24.381257Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 155.61874628067017,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:26.680094Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 153.31991124153137,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:28.975107Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 151.02490043640137,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T07:47:32.114073Z",
+      "slug": "btc-updown-5m-1789717500",
+      "status": "heartbeat",
+      "gamma_up": 0.255,
+      "gamma_down": 0.745,
+      "clob_up_ask": 0.27,
+      "clob_down_ask": 0.74,
+      "seconds_left": 148.74091982841492,
+      "min_spread": 0.010000000000000009
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789717500\", \"force_side\": \"DOWN\", \"token_id\": \"67088806875076807472733703565588917859918438397042841612300407942641152732240\", \"entry_price\": 0.78, \"notional_usd\": 40.0, \"top_ask_notional_usd\": 195.53040000000001, \"collateral_pusd\": 431.326347, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0x71997578b41ac723629202c57cd2138e1aa2fa9dcd8993ed8ed38234faf9ea34\", \"takingAmount\": \"50.632909\", \"makingAmount\": \"39.999998\", \"status\": \"matched\", \"transactionsHashes\": [\"0x3581892cca59a5c621e43cd2665e52fe221fb90d21eff309b16311d3dd897cdb\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-18T07:47:36.808028Z",
+    "market_slug": "btc-updown-5m-1789717500",
+    "market_end_iso": "2026-09-18T07:50:00Z",
+    "side": "DOWN",
+    "token_id": "67088806875076807472733703565588917859918438397042841612300407942641152732240",
+    "entry_price": 0.78,
+    "shares": 50.632909,
+    "cost_usdc": 39.999998,
+    "open_order_id": "0x71997578b41ac723629202c57cd2138e1aa2fa9dcd8993ed8ed38234faf9ea34",
+    "open_tx": "0x3581892cca59a5c621e43cd2665e52fe221fb90d21eff309b16311d3dd897cdb"
+  },
+  "stop_loss_price": 0.585,
+  "last_side_price": 0.745,
+  "last_clob_bid": 0.99,
+  "last_check_at": "2026-09-18T07:49:39.674753Z",
+  "closed": {
+    "close_reason": "hold_to_settlement_winning_book",
+    "closed_at": "2026-09-18T07:49:44.929497Z",
+    "close_success": false,
+    "close_status": "held",
+    "close_order_id": null,
+    "close_tx": null,
+    "close_shares": 0.0,
+    "close_usdc": 0.0,
+    "close_skipped": "hold_to_settlement"
+  },
+  "realized_cashflow_pnl_usdc": null,
+  "finished_at": "2026-09-18T07:49:44.929523Z",
+  "result": "done"
+}
+[2026-09-18T07:49:45Z] session_end rc=0 sessions=1 stake_usd=40
+journal_ok trades=217 md=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.md json=/home/yukeen/polymarketbot/5min-btc-polymarket/data/live_trades.json
+[2026-09-18T07:51:30Z] fills=1/1 sessions=1/40
+[2026-09-18T07:51:30Z] stop_max_fills=1
+[2026-09-18T07:51:30Z] loop_exit

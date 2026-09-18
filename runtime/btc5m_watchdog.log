@@ -1,0 +1,12 @@
+[2026-09-16T12:52:25Z] watchdog_start sleep=30s keepalive=/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m.keepalive
+[2026-09-16T12:52:25Z] trader_stopped restarting
+already_running pid=1290090
+[2026-09-16T12:52:46Z] watchdog_start sleep=30s keepalive=/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m.keepalive
+[2026-09-16T17:20:24Z] trader_stopped restarting
+started pid=1679171 log=/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m_conservative_20260916T172024Z.log
+[2026-09-16T20:26:08Z] trader_stopped restarting
+started pid=1947232 log=/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m_conservative_20260916T202608Z.log
+[2026-09-16T21:45:50Z] trader_stopped restarting
+started pid=2061596 log=/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m_conservative_20260916T214550Z.log
+[2026-09-16T23:55:22Z] trader_stopped restarting
+started pid=2242131 log=/home/yukeen/polymarketbot/5min-btc-polymarket/runtime/btc5m_conservative_20260916T235523Z.log

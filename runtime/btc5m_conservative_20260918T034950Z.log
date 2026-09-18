@@ -1,0 +1,843 @@
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[2026-09-18T03:49:51Z] start_cash=428.10203
+[2026-09-18T03:49:51Z] session_begin sessions=0 fills=0 stake_usd=5
+[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={"error":"Could not create api key"}
+
+[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={"error":"No orderbook exists for the requested token id"}
+
+[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={"error":"No orderbook exists for the requested token id"}
+
+[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={"error":"No orderbook exists for the requested token id"}
+
+[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={"error":"No orderbook exists for the requested token id"}
+
+[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={"error":"No orderbook exists for the requested token id"}
+
+[py_clob_client_v2] request error status=404 url=https://clob.polymarket.com/book body={"error":"No orderbook exists for the requested token id"}
+
+{
+  "started_at": "2026-09-18T03:49:52.403650Z",
+  "params": {
+    "profile": "conservative",
+    "threshold": 0.7,
+    "stake_usd": 5.0,
+    "stop_loss_pct": 0.25,
+    "exit_before_sec": 20,
+    "min_entry_seconds_left": 90,
+    "max_entry_seconds_left": 150,
+    "entry_timeout_min": 20,
+    "poll_sec": 2.0,
+    "max_ask": 0.85,
+    "expensive_ask": 0.8,
+    "expensive_after_wins": 3,
+    "clob_cut_bid": 0.4,
+    "close_retry_max": 30,
+    "close_retry_delay_sec": 2.0,
+    "no_gamma_sl": true,
+    "execute": true,
+    "win_streak": 6
+  },
+  "attempts": [
+    {
+      "ts": "2026-09-18T03:49:52.815407Z",
+      "slug": "btc-updown-5m-1789703100",
+      "status": "skip_too_late_to_enter",
+      "seconds_left": 7.184605836868286,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:49:58.064768Z",
+      "status": "heartbeat_no_current_market"
+    },
+    {
+      "ts": "2026-09-18T03:50:00.369563Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 299.6304452419281,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:02.688677Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 297.31133008003235,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:04.986842Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 295.0131645202637,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:07.320631Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 292.6793780326843,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:09.749231Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 290.25077867507935,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:12.053966Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 287.9460434913635,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:14.346351Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 285.65365290641785,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:16.640080Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 283.3599271774292,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:18.940941Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 281.05906224250793,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:21.234404Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 278.7656030654907,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:23.546915Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 276.4530920982361,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:25.848329Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 274.1516788005829,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:28.168631Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 271.8313744068146,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:33.411052Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 266.58895540237427,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:35.696424Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 264.3035819530487,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:37.995140Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 262.00486636161804,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:40.306899Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 259.6931080818176,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:42.591288Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 257.40871834754944,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:44.900586Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 255.09942078590393,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:47.212394Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 252.7876136302948,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:49.512129Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 250.48787760734558,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:51.819621Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 248.18038511276245,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:54.252486Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 245.7475209236145,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:56.545856Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 243.45415091514587,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:50:58.837297Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 241.1627070903778,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:01.131725Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 238.8682816028595,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:03.433077Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 236.56692934036255,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:08.683033Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 231.31697487831116,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:10.970032Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 229.02997541427612,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:13.265879Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 226.7341272830963,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:15.568502Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 224.4315049648285,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:17.872459Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 222.1275486946106,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:20.181169Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 219.81883811950684,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:22.480702Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 217.5193042755127,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:24.785612Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 215.21439480781555,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:27.114663Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 212.88534283638,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:29.452165Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 210.54784226417542,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:31.729687Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 208.27031636238098,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:34.023821Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 205.97618579864502,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:36.352995Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 203.6470115184784,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:38.637685Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 201.3623218536377,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:43.874050Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 196.12595462799072,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:46.190050Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 193.80995631217957,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:48.489419Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 191.5105857849121,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:50.780975Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 189.2190318107605,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:53.083233Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 186.91677379608154,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:55.398966Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 184.60104084014893,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:51:57.765794Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 182.23421263694763,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:00.057752Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 179.94225192070007,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:02.360429Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 177.63957834243774,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:04.678819Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 175.32120966911316,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:06.983845Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 173.01616215705872,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:09.299723Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 170.70028400421143,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:11.592799Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 168.40720677375793,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:14.006153Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 165.9938542842865,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:19.252340Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 160.74766755104065,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:21.576423Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 158.42358350753784,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:23.895235Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 156.10477137565613,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:26.174865Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 153.82514071464539,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:28.460139Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "skip_too_early_to_enter",
+      "seconds_left": 151.53986406326294,
+      "min_entry_seconds_left": 90,
+      "max_entry_seconds_left": 150
+    },
+    {
+      "ts": "2026-09-18T03:52:31.614313Z",
+      "slug": "btc-updown-5m-1789703400",
+      "status": "heartbeat",
+      "gamma_up": 0.505,
+      "gamma_down": 0.495,
+      "clob_up_ask": 0.77,
+      "clob_down_ask": 0.24,
+      "seconds_left": 149.25531888008118,
+      "min_spread": 0.009999999999999981
+    }
+  ],
+  "open_raw": "{\"mode\": \"open\", \"execute\": true, \"market_slug\": \"btc-updown-5m-1789703400\", \"force_side\": \"UP\", \"token_id\": \"63798991412086122482814251863878445978643315181087878942658826314816548194742\", \"entry_price\": 0.76, \"notional_usd\": 5.0, \"top_ask_notional_usd\": 263.5604, \"collateral_pusd\": 428.10203, \"order_post_result\": {\"errorMsg\": \"\", \"orderID\": \"0xcf16cadfa3444bca5e8b600cda0fe2be55dfcb4e8b21796f57ffcf884121bf78\", \"takingAmount\": \"6.849314\", \"makingAmount\": \"4.999999\", \"status\": \"matched\", \"transactionsHashes\": [\"0x756d99db69cbbfb2ed472810b439c8efd7325d7e267600d2ca235083b5fda475\"], \"success\": true}}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n",
+  "opened": {
+    "opened_at": "2026-09-18T03:52:36.271331Z",
+    "market_slug": "btc-updown-5m-1789703400",
+    "market_end_iso": "2026-09-18T03:55:00Z",
+    "side": "UP",
+    "token_id": "63798991412086122482814251863878445978643315181087878942658826314816548194742",
+    "entry_price": 0.76,
+    "shares": 6.849314,
+    "cost_usdc": 4.999999,
+    "open_order_id": "0xcf16cadfa3444bca5e8b600cda0fe2be55dfcb4e8b21796f57ffcf884121bf78",
+    "open_tx": "0x756d99db69cbbfb2ed472810b439c8efd7325d7e267600d2ca235083b5fda475"
+  },
+  "stop_loss_price": 0.5700000000000001,
+  "last_side_price": 0.715,
+  "last_clob_bid": 0.01,
+  "last_check_at": "2026-09-18T03:54:36.344245Z",
+  "close_debug": [
+    {
+      "ts": "2026-09-18T03:54:45.882989Z",
+      "attempt": 1,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:54:51.117789Z",
+      "attempt": 2,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:54:56.227193Z",
+      "attempt": 3,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:01.828793Z",
+      "attempt": 4,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:07.036428Z",
+      "attempt": 5,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:15.260831Z",
+      "attempt": 6,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:20.475213Z",
+      "attempt": 7,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:25.715636Z",
+      "attempt": 8,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:30.912293Z",
+      "attempt": 9,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:36.042270Z",
+      "attempt": 10,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:41.232123Z",
+      "attempt": 11,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:46.593090Z",
+      "attempt": 12,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:54.839209Z",
+      "attempt": 13,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:55:59.977221Z",
+      "attempt": 14,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:05.155896Z",
+      "attempt": 15,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:10.372478Z",
+      "attempt": 16,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:16.155379Z",
+      "attempt": 17,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:21.471803Z",
+      "attempt": 18,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:29.803448Z",
+      "attempt": 19,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:35.046176Z",
+      "attempt": 20,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:40.339390Z",
+      "attempt": 21,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:45.447105Z",
+      "attempt": 22,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:50.669827Z",
+      "attempt": 23,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:56:55.943909Z",
+      "attempt": 24,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:04.107782Z",
+      "attempt": 25,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:07.480779Z",
+      "attempt": 25,
+      "order_type": "GTC",
+      "status": "",
+      "close_skipped": "",
+      "limit_price": 0.705
+    },
+    {
+      "ts": "2026-09-18T03:57:13.107180Z",
+      "attempt": 26,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:16.546768Z",
+      "attempt": 26,
+      "order_type": "GTC",
+      "status": "",
+      "close_skipped": "",
+      "limit_price": 0.705
+    },
+    {
+      "ts": "2026-09-18T03:57:21.762800Z",
+      "attempt": 27,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:25.190582Z",
+      "attempt": 27,
+      "order_type": "GTC",
+      "status": "",
+      "close_skipped": "",
+      "limit_price": 0.705
+    },
+    {
+      "ts": "2026-09-18T03:57:30.453305Z",
+      "attempt": 28,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:36.770221Z",
+      "attempt": 28,
+      "order_type": "GTC",
+      "status": "",
+      "close_skipped": "",
+      "limit_price": 0.705
+    },
+    {
+      "ts": "2026-09-18T03:57:42.480592Z",
+      "attempt": 29,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:45.999675Z",
+      "attempt": 29,
+      "order_type": "GTC",
+      "status": "",
+      "close_skipped": "",
+      "limit_price": 0.705
+    },
+    {
+      "ts": "2026-09-18T03:57:51.266868Z",
+      "attempt": 30,
+      "order_type": "FAK",
+      "status": "error",
+      "close_skipped": ""
+    },
+    {
+      "ts": "2026-09-18T03:57:55.156175Z",
+      "attempt": 30,
+      "order_type": "GTC",
+      "status": "",
+      "close_skipped": "",
+      "limit_price": 0.705
+    }
+  ],
+  "close_fallback": {
+    "type": "GTC_LIMIT",
+    "price": 0.705
+  },
+  "close_raw": "{\"error\": \"PolyApiException[status_code=400, error_message={'error': 'invalid token id'}]\", \"order_post_result\": {\"success\": false, \"status\": \"error\", \"errorMsg\": \"PolyApiException[status_code=400, error_message={'error': 'invalid token id'}]\"}, \"close_skipped\": \"\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/auth/api-key body={\"error\":\"Could not create api key\"}\n\n[py_clob_client_v2] request error status=400 url=https://clob.polymarket.com/order body={\"error\":\"invalid token id\"}\n",
+  "closed": {
+    "close_reason": "time_exit_20s_before_end",
+    "closed_at": "2026-09-18T03:57:57.156294Z",
+    "close_success": false,
+    "close_status": null,
+    "close_order_id": null,
+    "close_tx": null,
+    "close_shares": 0.0,
+    "close_usdc": 0.0,
+    "close_skipped": null
+  },
+  "realized_cashflow_pnl_usdc": null,
+  "finished_at": "2026-09-18T03:57:57.156341Z",
+  "result": "done"
+}
+[2026-09-18T03:57:57Z] session_end rc=0 sessions=1 stake_usd=5
