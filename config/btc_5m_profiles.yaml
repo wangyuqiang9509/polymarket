@@ -9,7 +9,7 @@ strategy_reference:
   btc_move_usd_min: 70
   btc_move_usd_max_reference: 100
   skew_bias_note: "Prefer direction supported by market skew when momentum is already established."
-  sizing_note: "Typical discretionary sizing can be up to ~50% of allocated trading balance; tune risk per user preference."
+  sizing_note: "Fixed $5 per ticket. No 5→10→30 ladder. Skip stronger-side ask >= 0.85; after 3 wins skip ask >= 0.80. Do not fade the cheap side."
   optional_hedge_note: "When skew is extreme (for example >=95/5), allow a small opposite hedge to reduce last-second reversal risk."
 
 shared_rules:
@@ -31,7 +31,8 @@ shared_rules:
     skip_if_top_ask_notional_usd_lt: 30
   session_timing:
     monitor_continuous: true
-    min_entry_seconds_left: 60
+    min_entry_seconds_left: 90
+    max_entry_seconds_left: 150
     exit_before_sec: 20
 
 profiles:
@@ -41,6 +42,9 @@ profiles:
       trigger_source: "clob_best_ask"
       direction_rule: "follow_stronger_side_over_threshold"
       threshold_price: 0.70
+      max_ask: 0.85
+      expensive_ask: 0.80
+      expensive_after_wins: 3
     sizing:
       stake_mode: "fixed_or_cap"
       stake_usd: 5
@@ -48,6 +52,7 @@ profiles:
       max_notional_usd: 8
       daily_max_loss_pct: 10
       max_trades_per_day: 12
+      ladder: false
     hedge:
       enabled: true
       trigger_side_price_gte: 0.95
@@ -58,6 +63,12 @@ profiles:
     stop_loss:
       enabled: true
       stop_loss_pct_from_entry: 0.25
+      trigger_source: "clob_best_bid_primary"
+      clob_sl_min_bid: 0.45
+      clob_cut_bid: 0.40
+      early_flatten_sec: 45
+      early_flatten_bid: 0.55
+      exit_before_sec: 20
 
   aggressive:
     description: "Higher frequency and higher risk mode."
@@ -65,6 +76,9 @@ profiles:
       trigger_source: "clob_best_ask"
       direction_rule: "follow_stronger_side_over_threshold"
       threshold_price: 0.70
+      max_ask: 0.85
+      expensive_ask: 0.80
+      expensive_after_wins: 3
     sizing:
       stake_mode: "fixed_or_cap"
       stake_usd: 5
@@ -72,6 +86,7 @@ profiles:
       max_notional_usd: 15
       daily_max_loss_pct: 15
       max_trades_per_day: 20
+      ladder: false
     hedge:
       enabled: true
       trigger_side_price_gte: 0.93
@@ -82,6 +97,12 @@ profiles:
     stop_loss:
       enabled: true
       stop_loss_pct_from_entry: 0.30
+      trigger_source: "clob_best_bid_primary"
+      clob_sl_min_bid: 0.45
+      clob_cut_bid: 0.40
+      early_flatten_sec: 45
+      early_flatten_bid: 0.55
+      exit_before_sec: 20
 
 runner_mapping:
   script: "skills/btc-5m-live/scripts/test_btc_5m_session_exit_sl.py"
@@ -90,13 +111,18 @@ runner_mapping:
     - "--stake-usd"
     - "--stop-loss-pct"
     - "--exit-before-sec"
+    - "--early-flatten-sec"
+    - "--early-flatten-bid"
+    - "--clob-sl-min-bid"
     - "--min-entry-seconds-left"
+    - "--max-entry-seconds-left"
     - "--entry-timeout-min"
     - "--poll-sec"
     - "--execute"
-  example_conservative_now: ".venv/bin/python scripts/test_btc_5m_session_exit_sl.py --threshold 0.70 --stake-usd 4 --stop-loss-pct 0.25 --exit-before-sec 20 --min-entry-seconds-left 60 --entry-timeout-min 60 --poll-sec 5 --execute"
-  example_aggressive_now: ".venv/bin/python scripts/test_btc_5m_session_exit_sl.py --threshold 0.70 --stake-usd 6 --stop-loss-pct 0.30 --exit-before-sec 20 --min-entry-seconds-left 60 --entry-timeout-min 60 --poll-sec 5 --execute"
+  example_conservative_now: ".venv/bin/python scripts/test_btc_5m_session_exit_sl.py --threshold 0.70 --stake-usd 5 --stop-loss-pct 0.25 --exit-before-sec 20 --early-flatten-sec 45 --min-entry-seconds-left 90 --max-entry-seconds-left 150 --entry-timeout-min 60 --poll-sec 5 --execute"
+  example_aggressive_now: ".venv/bin/python scripts/test_btc_5m_session_exit_sl.py --threshold 0.70 --stake-usd 5 --stop-loss-pct 0.30 --exit-before-sec 20 --early-flatten-sec 45 --min-entry-seconds-left 90 --max-entry-seconds-left 150 --entry-timeout-min 60 --poll-sec 5 --execute"
 
 notes:
   - "Current 5m runner uses threshold/side-strength logic; impulse filter integration can be extended at strategy layer."
-  - "Entry behavior: continuous CLOB ask monitoring; if UP/DOWN >= threshold, enter on stronger side."
+  - "Entry behavior: wait until 90-150s remain (~120s ± 30s); if stronger-side CLOB ask >= 0.70, enter that side. Skip earlier and later."
+  - "Stop-loss: CLOB bid vs entry*0.75 while bid >= 0.45; Gamma 25% only if a salvage bid remains; flatten live non-winners at 45s left; hold winners at 20s."

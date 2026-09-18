@@ -14,7 +14,7 @@ description: Run and monitor BTC 5-minute Up/Down trading on Polymarket using mo
 
 ## Strategy Alignment
 Use this skill when the operator wants to execute a BTC 5m momentum strategy:
-- Entry focus near event close (around 2 minutes left).
+- Entry focus near event close (around 2 minutes left, 90-150s window).
 - Confirm meaningful BTC move in the interval (about $70-$100).
 - Prefer direction supported by market skew.
 - Enter with momentum, not against it.
@@ -22,9 +22,16 @@ Use this skill when the operator wants to execute a BTC 5m momentum strategy:
 
 ## Operational Rules
 - Default is dry-run unless `--execute` is set.
-- Use controlled stake sizing (`--stake-usd`, profile caps).
+- Fixed `$5` stake. Ladder / martingale is off unless `BTC5M_MARTINGALE=1`.
+- Enter only when about **120 seconds** remain (**90-150s**). Skip earlier and later. Stronger-side CLOB ask must be `>= 0.70`.
 - If both UP and DOWN satisfy threshold logic, choose the stronger side.
-- Keep stop-loss and timing guards enabled in profile config.
+- Skip if that ask is `>= 0.85`. After 3 consecutive wins, also skip ask `>= 0.80`. Do not buy the cheap side instead.
+- On close, do not dump at 1 cent when the book is dead; GTC only if a bid `>= 0.05` is still there.
+- Primary stop: **CLOB best bid** vs entry × 0.75, but only while bid is still liquid (`>= 0.45`). This is the sellable 25% stop.
+- Gamma 25% stop is secondary and only fires if a CLOB bid `>= 0.05` is still there (can actually sell). `--no-gamma-sl` disables this Gamma trigger only.
+- CLOB wick floor stays: FAK-sell if bid is `0.05–0.40` **and** Gamma last is `<= 0.50`. A CLOB wick with Gamma still high is a fakeout.
+- At **45s** left, sell if CLOB bid is live but `< 0.55` (`time_exit_45s_not_winning`). Do not flatten 0.70–0.89 names that can still run.
+- At **20s** left, hold if bid/Gamma `>= 0.90`; otherwise try to sell. Last 20s is often a 404 on the loser.
 
 ## One-shot real test
 From trading repo root:

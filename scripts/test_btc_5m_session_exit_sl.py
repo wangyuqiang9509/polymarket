@@ -10,9 +10,32 @@ from pathlib import Path
 
 import requests
 
-from py_clob_client.client import ClobClient
-from py_clob_client.constants import POLYGON
-from py_clob_client.clob_types import ApiCreds
+from py_clob_client_v2 import ApiCreds, ClobClient, OrderMarketCancelParams
+
+from btc5m_martingale import load_trades
+from btc5m_rules import (
+    DEFAULT_CLOB_CUT_BID,
+    DEFAULT_CLOB_SL_MIN_BID,
+    DEFAULT_EARLY_FLATTEN_BID,
+    DEFAULT_EARLY_FLATTEN_SEC,
+    DEFAULT_EXPENSIVE_AFTER_WINS,
+    DEFAULT_EXPENSIVE_ASK,
+    DEFAULT_MAX_ASK,
+    DEFAULT_MAX_ENTRY_SECONDS_LEFT,
+    DEFAULT_MIN_ENTRY_SECONDS_LEFT,
+    choose_side,
+    consecutive_wins,
+    fak_unmatched,
+    in_entry_window,
+    salvage_limit_price,
+    should_cut_on_clob_bid,
+    should_cut_on_clob_stop,
+    should_cut_on_gamma_stop,
+    should_flatten_before_dead_book,
+    should_hold_to_settlement,
+)
+
+POLYGON = 137
 
 UTC = dt.timezone.utc
 
@@ -124,18 +147,30 @@ def market_side_prices(market: dict[str, Any]) -> tuple[float, float, str, str, 
     return up_p, dn_p, up_t, dn_t, str(market.get('slug') or market.get('_event_slug') or ''), str(market.get('endDate') or market.get('endDateIso') or '')
 
 
+def _book_levels(book, attr: str):
+    if isinstance(book, dict):
+        return book.get(attr) or []
+    return getattr(book, attr, []) or []
+
+
+def _level_price(row) -> float:
+    if isinstance(row, dict):
+        return float(row.get('price') or 0)
+    return float(getattr(row, 'price', 0) or 0)
+
+
 def _best_bid_ask(book) -> tuple[Optional[float], Optional[float]]:
-    bids = getattr(book, 'bids', []) or []
-    asks = getattr(book, 'asks', []) or []
+    bids = _book_levels(book, 'bids')
+    asks = _book_levels(book, 'asks')
     best_bid = None
     best_ask = None
     for b in bids:
-        p = float(getattr(b, 'price', 0) or 0)
-        if best_bid is None or p > best_bid:
+        p = _level_price(b)
+        if p > 0 and (best_bid is None or p > best_bid):
             best_bid = p
     for a in asks:
-        p = float(getattr(a, 'price', 0) or 0)
-        if best_ask is None or p < best_ask:
+        p = _level_price(a)
+        if p > 0 and (best_ask is None or p < best_ask):
             best_ask = p
     return best_bid, best_ask
 
@@ -174,16 +209,21 @@ def auth_clob_client(clob_base: str = 'https://clob.polymarket.com') -> Optional
         v1 = os.getenv('PM_API_KEY') or ''
         v2 = os.getenv('PM_API_SECRET') or ''
         v3 = os.getenv('PM_API_PASSPHRASE') or ''
-        if not key or not v1 or not v2 or not v3:
+        if not key:
             return None
-        c = ClobClient(host=clob_base, chain_id=POLYGON, key=key, signature_type=sig, funder=funder)
-        creds = {
-            f"api_{'key'}": v1,
-            f"api_{'secret'}": v2,
-            f"api_{'passphrase'}": v3,
-        }
-        c.set_api_creds(ApiCreds(**creds))
-        return c
+        l1 = ClobClient(host=clob_base, chain_id=POLYGON, key=key)
+        if v1 and v2 and v3:
+            creds = ApiCreds(api_key=v1, api_secret=v2, api_passphrase=v3)
+        else:
+            creds = l1.create_or_derive_api_key()
+        return ClobClient(
+            host=clob_base,
+            chain_id=POLYGON,
+            key=key,
+            creds=creds,
+            signature_type=sig,
+            funder=funder,
+        )
     except Exception:
         return None
 
@@ -214,7 +254,7 @@ def cancel_token_orders(client: Optional[ClobClient], token_id: str) -> Optional
     if client is None:
         return None
     try:
-        return client.cancel_market_orders(asset_id=str(token_id))
+        return client.cancel_market_orders(OrderMarketCancelParams(asset_id=str(token_id)))
     except Exception as e:
         return {'error': str(e)}
 
@@ -287,18 +327,34 @@ PROFILES: dict[str, dict[str, Any]] = {
         'stake_usd': 5.0,
         'stop_loss_pct': 0.25,
         'exit_before_sec': 20,
-        'min_entry_seconds_left': 60,
+        'min_entry_seconds_left': DEFAULT_MIN_ENTRY_SECONDS_LEFT,
+        'max_entry_seconds_left': DEFAULT_MAX_ENTRY_SECONDS_LEFT,
         'entry_timeout_min': 60,
         'poll_sec': 5.0,
+        'max_ask': DEFAULT_MAX_ASK,
+        'expensive_ask': DEFAULT_EXPENSIVE_ASK,
+        'expensive_after_wins': DEFAULT_EXPENSIVE_AFTER_WINS,
+        'clob_cut_bid': DEFAULT_CLOB_CUT_BID,
+        'clob_sl_min_bid': DEFAULT_CLOB_SL_MIN_BID,
+        'early_flatten_sec': DEFAULT_EARLY_FLATTEN_SEC,
+        'early_flatten_bid': DEFAULT_EARLY_FLATTEN_BID,
     },
     'aggressive': {
         'threshold': 0.70,
         'stake_usd': 5.0,
         'stop_loss_pct': 0.30,
         'exit_before_sec': 20,
-        'min_entry_seconds_left': 60,
+        'min_entry_seconds_left': DEFAULT_MIN_ENTRY_SECONDS_LEFT,
+        'max_entry_seconds_left': DEFAULT_MAX_ENTRY_SECONDS_LEFT,
         'entry_timeout_min': 60,
         'poll_sec': 5.0,
+        'max_ask': DEFAULT_MAX_ASK,
+        'expensive_ask': DEFAULT_EXPENSIVE_ASK,
+        'expensive_after_wins': DEFAULT_EXPENSIVE_AFTER_WINS,
+        'clob_cut_bid': DEFAULT_CLOB_CUT_BID,
+        'clob_sl_min_bid': DEFAULT_CLOB_SL_MIN_BID,
+        'early_flatten_sec': DEFAULT_EARLY_FLATTEN_SEC,
+        'early_flatten_bid': DEFAULT_EARLY_FLATTEN_BID,
     },
 }
 
@@ -315,11 +371,34 @@ def apply_profile(args: argparse.Namespace) -> argparse.Namespace:
         args.exit_before_sec = int(prof['exit_before_sec'])
     if args.min_entry_seconds_left is None:
         args.min_entry_seconds_left = int(prof['min_entry_seconds_left'])
+    if args.max_entry_seconds_left is None:
+        args.max_entry_seconds_left = int(prof['max_entry_seconds_left'])
     if args.entry_timeout_min is None:
         args.entry_timeout_min = int(prof['entry_timeout_min'])
     if args.poll_sec is None:
         args.poll_sec = float(prof['poll_sec'])
+    if args.max_ask is None:
+        args.max_ask = float(prof['max_ask'])
+    if args.expensive_ask is None:
+        args.expensive_ask = float(prof['expensive_ask'])
+    if args.expensive_after_wins is None:
+        args.expensive_after_wins = int(prof['expensive_after_wins'])
+    if args.clob_cut_bid is None:
+        args.clob_cut_bid = float(prof['clob_cut_bid'])
+    if args.clob_sl_min_bid is None:
+        args.clob_sl_min_bid = float(prof['clob_sl_min_bid'])
+    if args.early_flatten_sec is None:
+        args.early_flatten_sec = int(prof['early_flatten_sec'])
+    if args.early_flatten_bid is None:
+        args.early_flatten_bid = float(prof['early_flatten_bid'])
     return args
+
+
+def default_journal_path() -> Path:
+    env_journal = os.environ.get('BTC5M_JOURNAL')
+    if env_journal:
+        return Path(env_journal)
+    return Path(__file__).resolve().parents[1] / 'data' / 'live_trades.json'
 
 
 def default_repo_path() -> str:
@@ -337,11 +416,20 @@ def main():
     ap.add_argument('--stake-usd', type=float, default=None)
     ap.add_argument('--stop-loss-pct', type=float, default=None, help='0.30 means -30%% from entry price')
     ap.add_argument('--exit-before-sec', type=int, default=None)
-    ap.add_argument('--min-entry-seconds-left', type=int, default=None, help='Do not open if less seconds remain in current 5m slot')
+    ap.add_argument('--min-entry-seconds-left', type=int, default=None, help='Do not open if fewer seconds remain (default 90, ~120s-30s)')
+    ap.add_argument('--max-entry-seconds-left', type=int, default=None, help='Do not open if more seconds remain (default 150, ~120s+30s)')
     ap.add_argument('--entry-timeout-min', type=int, default=None)
     ap.add_argument('--poll-sec', type=float, default=None)
+    ap.add_argument('--max-ask', type=float, default=None, help='Skip if stronger-side ask is at or above this (do not fade the cheap side)')
+    ap.add_argument('--expensive-ask', type=float, default=None, help='After a win streak, skip asks at or above this')
+    ap.add_argument('--expensive-after-wins', type=int, default=None, help='Win streak that arms the expensive-ask skip')
+    ap.add_argument('--clob-cut-bid', type=float, default=None, help='FAK-sell if current CLOB bid is between salvage min and this floor')
+    ap.add_argument('--clob-sl-min-bid', type=float, default=None, help='CLOB 25%% SL only if bid is at or above this (wick/dead zone is below)')
+    ap.add_argument('--early-flatten-sec', type=int, default=None, help='Seconds before end to flatten a live non-winner (default 45)')
+    ap.add_argument('--early-flatten-bid', type=float, default=None, help='At early-flatten-sec, sell if CLOB bid is below this and still salvageable')
     ap.add_argument('--close-retry-max', type=int, default=18, help='Max close retries when position is not yet visible / not immediately closable')
     ap.add_argument('--close-retry-delay-sec', type=float, default=2.0, help='Delay between close retries')
+    ap.add_argument('--no-gamma-sl', action='store_true', help='Do not stop-loss against Gamma last vs entry; keep CLOB 25%% SL, floor, and time exits')
     ap.add_argument('--execute', action='store_true')
     args = apply_profile(ap.parse_args())
 
@@ -354,14 +442,26 @@ def main():
             'stop_loss_pct': args.stop_loss_pct,
             'exit_before_sec': args.exit_before_sec,
             'min_entry_seconds_left': args.min_entry_seconds_left,
+            'max_entry_seconds_left': args.max_entry_seconds_left,
             'entry_timeout_min': args.entry_timeout_min,
             'poll_sec': args.poll_sec,
+            'max_ask': args.max_ask,
+            'expensive_ask': args.expensive_ask,
+            'expensive_after_wins': args.expensive_after_wins,
+            'clob_cut_bid': args.clob_cut_bid,
+            'clob_sl_min_bid': args.clob_sl_min_bid,
+            'early_flatten_sec': args.early_flatten_sec,
+            'early_flatten_bid': args.early_flatten_bid,
             'close_retry_max': args.close_retry_max,
             'close_retry_delay_sec': args.close_retry_delay_sec,
+            'no_gamma_sl': args.no_gamma_sl,
             'execute': args.execute,
         },
         'attempts': [],
     }
+
+    win_streak = consecutive_wins(load_trades(default_journal_path()))
+    report['params']['win_streak'] = win_streak
 
     deadline = time.time() + args.entry_timeout_min * 60
     opened = None
@@ -389,14 +489,20 @@ def main():
                 time.sleep(args.poll_sec)
                 continue
 
-            # Do not open if less than N seconds remain in current slot.
-            if sec_left < args.min_entry_seconds_left:
+            # Only open around ~120s left (default 90-150). Too early is noise; too late is expiry risk.
+            in_window, window_skip = in_entry_window(
+                sec_left,
+                min_left=args.min_entry_seconds_left,
+                max_left=args.max_entry_seconds_left,
+            )
+            if not in_window:
                 report['attempts'].append({
                     'ts': ts_utc(),
                     'slug': slug,
-                    'status': 'skip_too_late_to_enter',
+                    'status': window_skip or 'skip_outside_entry_window',
                     'seconds_left': sec_left,
                     'min_entry_seconds_left': args.min_entry_seconds_left,
+                    'max_entry_seconds_left': args.max_entry_seconds_left,
                 })
                 time.sleep(args.poll_sec)
                 continue
@@ -421,26 +527,30 @@ def main():
                 'min_spread': min_spread,
             })
 
-            candidates: list[tuple[str, float]] = []
-            if up_ask is not None and float(up_ask) >= args.threshold:
-                candidates.append(('UP', float(up_ask)))
-            if dn_ask is not None and float(dn_ask) >= args.threshold:
-                candidates.append(('DOWN', float(dn_ask)))
-
-            if not candidates:
+            side, trigger_price, skip_reason = choose_side(
+                up_ask,
+                dn_ask,
+                threshold=args.threshold,
+                max_ask=args.max_ask,
+                win_streak=win_streak,
+                expensive_after_wins=args.expensive_after_wins,
+                expensive_ask=args.expensive_ask,
+            )
+            if skip_reason or side is None or trigger_price is None:
                 report['attempts'].append({
                     'ts': ts_utc(),
                     'slug': slug,
-                    'status': 'skip_price_below_threshold',
+                    'status': skip_reason or 'skip_price_below_threshold',
                     'threshold': args.threshold,
+                    'max_ask': args.max_ask,
+                    'win_streak': win_streak,
                     'clob_up_ask': up_ask,
                     'clob_down_ask': dn_ask,
                     'seconds_left': sec_left,
+                    'trigger_price': trigger_price,
                 })
                 time.sleep(args.poll_sec)
                 continue
-
-            side, trigger_price = sorted(candidates, key=lambda x: x[1], reverse=True)[0]
 
             out, objs = run_open(args.repo, slug, side, args.stake_usd, args.execute)
             post = None
@@ -493,6 +603,7 @@ def main():
     report['stop_loss_price'] = sl_price
 
     close_reason = None
+    early_flatten_sec = int(args.early_flatten_sec)
     while True:
         now = time.time()
         if now >= (end_ts - args.exit_before_sec):
@@ -501,11 +612,69 @@ def main():
 
         side_px = get_side_price_from_slug(opened['market_slug'], opened['side'])
         report['last_side_price'] = side_px
+        try:
+            live_bid = clob_best_bid(opened['token_id'])
+        except Exception:
+            live_bid = None
+        if live_bid is not None:
+            report['last_clob_bid'] = live_bid
         report['last_check_at'] = ts_utc()
-        if side_px is not None and side_px <= sl_price:
+        # CLOB wick alone is not enough: live winners printed 0.28–0.37 with Gamma still 0.73+.
+        if should_cut_on_clob_bid(live_bid, side_px, cut_bid=args.clob_cut_bid):
+            close_reason = 'clob_bid_floor'
+            break
+        if should_cut_on_clob_stop(
+            live_bid,
+            sl_price,
+            min_live_bid=args.clob_sl_min_bid,
+        ):
+            close_reason = f"stop_loss_clob_{int(args.stop_loss_pct * 100)}pct"
+            break
+        if (not args.no_gamma_sl) and should_cut_on_gamma_stop(side_px, sl_price, live_bid):
             close_reason = f"stop_loss_{int(args.stop_loss_pct * 100)}pct"
             break
+        # Last 20s is often a 404 on the loser. Flatten a live non-winner at ~45s.
+        if now >= (end_ts - early_flatten_sec) and should_flatten_before_dead_book(
+            live_bid,
+            flatten_below=args.early_flatten_bid,
+        ):
+            close_reason = f'time_exit_{early_flatten_sec}s_not_winning'
+            break
         time.sleep(args.poll_sec)
+
+    # Last 20s: winning book can still be sold (~0.99), losing book is usually 404.
+    # Hold the winning book to settlement instead of clipping $0.01–0.08.
+    if close_reason and close_reason.startswith('time_exit'):
+        live_bid = report.get('last_clob_bid')
+        try:
+            bb = clob_best_bid(opened['token_id'])
+            if bb is not None:
+                live_bid = bb
+                report['last_clob_bid'] = bb
+        except Exception:
+            pass
+        gamma_last = report.get('last_side_price')
+        if gamma_last is None:
+            gamma_last = get_side_price_from_slug(opened['market_slug'], opened['side'])
+            report['last_side_price'] = gamma_last
+        if should_hold_to_settlement(live_bid, gamma_last):
+            close_reason = 'hold_to_settlement_winning_book'
+            report['closed'] = {
+                'close_reason': close_reason,
+                'closed_at': ts_utc(),
+                'close_success': False,
+                'close_status': 'held',
+                'close_order_id': None,
+                'close_tx': None,
+                'close_shares': 0.0,
+                'close_usdc': 0.0,
+                'close_skipped': 'hold_to_settlement',
+            }
+            report['realized_cashflow_pnl_usdc'] = None
+            report['finished_at'] = ts_utc()
+            report['result'] = 'done'
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return
 
     close_debug: list[dict[str, Any]] = []
     close_obj: dict[str, Any] = {}
@@ -523,8 +692,13 @@ def main():
             args.execute,
             close_order_type='FAK',
         )
-        close_obj = objs[-1] if objs else {}
-        post = close_obj.get('order_post_result') or {}
+        close_obj = {}
+        post = {}
+        for o in reversed(objs):
+            if isinstance(o, dict) and 'order_post_result' in o:
+                close_obj = o
+                post = o.get('order_post_result') or {}
+                break
         status = str(post.get('status') or '').lower()
         skipped = str(close_obj.get('close_skipped') or '')
         close_debug.append({
@@ -534,7 +708,11 @@ def main():
             'status': status,
             'close_skipped': skipped,
         })
-        if post.get('success') is True and status == 'matched':
+        try:
+            filled_amt = float(post.get('takingAmount') or 0)
+        except Exception:
+            filled_amt = 0.0
+        if post.get('success') is True and (status == 'matched' or filled_amt > 0):
             break
 
         # common transient path right after open: token balance not yet visible
@@ -542,20 +720,30 @@ def main():
             time.sleep(float(args.close_retry_delay_sec))
             continue
 
-        # fallback: if FAK has no instant match, try a GTC limit close near current side price
-        txt = ((out or '') + '\n' + json.dumps(close_obj, ensure_ascii=False)).lower()
-        if 'no orders found to match with fak order' in txt:
-            px = get_side_price_from_slug(opened['market_slug'], opened['side'])
-            if px is None:
-                px = report.get('last_side_price')
-            if px is None:
-                px = opened['entry_price']
+        # FAK unmatched / dead book: GTC only if a real bid is still alive. Never 1-cent dump.
+        txt = ((out or '') + '\n' + json.dumps(close_obj, ensure_ascii=False))
+        if fak_unmatched(txt):
             bb = None
             try:
                 bb = clob_best_bid(opened['token_id'])
             except Exception:
                 bb = None
-            limit_px = max(0.01, min(0.99, float((bb - 0.01) if bb is not None else px)))
+            if bb is None:
+                bb = report.get('last_clob_bid')
+            gamma_last = get_side_price_from_slug(opened['market_slug'], opened['side'])
+            if gamma_last is None:
+                gamma_last = report.get('last_side_price')
+            limit_px = salvage_limit_price(bb, gamma_last)
+            if limit_px is None:
+                close_debug.append({
+                    'ts': ts_utc(),
+                    'attempt': i + 1,
+                    'order_type': 'SKIP_DEAD_BOOK',
+                    'status': 'no_salvage_bid',
+                    'close_skipped': skipped,
+                })
+                time.sleep(float(args.close_retry_delay_sec))
+                continue
             fallback_used = {'type': 'GTC_LIMIT', 'price': limit_px}
             out2, objs2 = run_close(
                 args.repo,
@@ -604,7 +792,18 @@ def main():
                     bb2 = clob_best_bid(opened['token_id'])
                 except Exception:
                     bb2 = None
-                force_px = max(0.01, min(0.99, float((bb2 - 0.02) if bb2 is not None else 0.01)))
+                if bb2 is None:
+                    bb2 = report.get('last_clob_bid')
+                force_px = salvage_limit_price(bb2, gamma_last)
+                if force_px is None:
+                    close_debug.append({
+                        'ts': ts_utc(),
+                        'attempt': i + 1,
+                        'order_type': 'SKIP_FORCE_DEAD_BOOK',
+                        'status': 'no_salvage_bid',
+                    })
+                    time.sleep(float(args.close_retry_delay_sec))
+                    continue
                 force_close_used = {
                     'type': 'FORCE_GTC_LIMIT',
                     'price': force_px,

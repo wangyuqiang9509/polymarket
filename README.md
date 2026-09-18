@@ -77,7 +77,7 @@ Use this quick pre-flight checklist before any real order:
 1. **Market validity**
    - Confirm the BTC 5m market is active and not about to close unexpectedly.
 2. **Time-to-close window**
-   - Prefer entries around ~120 seconds left (with reasonable tolerance).
+   - Prefer entries around ~120 seconds left (90-150s window). Skip earlier and later.
 3. **Impulse confirmation**
    - Confirm the observed BTC move is meaningful (strategy reference: ~$70-$100).
 4. **Skew confirmation**
@@ -87,7 +87,7 @@ Use this quick pre-flight checklist before any real order:
 6. **Sizing guardrails**
    - Validate stake, max notional, and daily loss limits before execution.
 7. **Stop / exit controls**
-   - Confirm stop-loss and `exit_before_sec` are configured.
+   - Confirm CLOB 25% stop, 45s flatten of live non-winners, and 20s hold-or-sell.
 8. **Execution mode**
    - Start in dry-run when changing parameters; switch to `--execute` only after validation.
 
