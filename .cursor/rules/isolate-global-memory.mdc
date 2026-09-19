@@ -1,0 +1,34 @@
+---
+description: Isolate this repo from global/user memories and other projects
+alwaysApply: true
+---
+
+# Isolated project: Polymarket BTC 5m bot
+
+This repository is a dedicated OpenClaw skill for **BTC 5-minute Up/Down markets on Polymarket**. It is not a general-purpose workspace.
+
+When this project is open, **global memory does not apply**. Project rules override user rules on conflict.
+
+## Ignore completely
+
+- Cursor User Memories / Saved Memories from other work
+- `~/.claude/CLAUDE.md` and any other user-global CLAUDE/AGENTS files
+- Facts, stack choices, architecture, and coding habits learned in other repos
+- Knowledge graphs of other indexed projects (for example `tgg-api`, `yukeen-callme`)
+- Strategy, risk, or execution assumptions from other trading bots unless they exist as files in **this** repo
+
+## Source of truth (this repo only)
+
+- `SKILL.md` — operating rules
+- `CONTOUR.md` — canonical runners and isolation boundary
+- `README.md` — strategy and pre-flight
+- `config/btc_5m_profiles.yaml` — risk/timing profiles
+- `scripts/` — control and runners
+
+Do not invent behavior from other Polymarket/crypto bots. The live order engine lives outside this repo (`pm-hl-conservative-plus-repo`); treat it as a documented dependency, not as a source of this skill's strategy.
+
+## Allowed to keep
+
+- Explicit instructions in the **current** conversation
+- Git/secret safety (no force-push, no committing `.env`)
+- Chat language follows the user; GitHub-facing docs stay English
